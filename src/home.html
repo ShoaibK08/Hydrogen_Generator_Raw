@@ -5,17 +5,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <script src="./assets/tailwind.min.css"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./assets/main.css" />
   <script defer src="./assets/main.js"></script>
   <script defer src="./assets/alpinejs.js"></script>
+  <style>
+    @keyframes moveAndFade {
+      0% {
+        opacity: 0;
+        transform: translateX(-200px);
+        /* Start 200px left */
+      }
+
+      50% {
+        opacity: 0.9;
+        transform: translateX(0);
+        /* Move to original position */
+      }
+
+    
+    }
+
+    .animate-box {
+      width: 100%;
+      height: 100%;
+
+      animation-name: moveAndFade;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+    }
+  </style>
 </head>
 
-<body class="bg-[#f5f5f5]">
+<body class="bg-[#f5f5f5] animate-box">
   <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }">
     <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
       <a href="./home.html">
-        <img src="./assets/logo.png" alt="logo" class="h-[45px]" />
+        <img src="./assets/Nvis logo.png" alt="logo" class="h-[45px]" />
       </a>
       <div class="flex items-center gap-2 sm:gap-4">
         <a href="./home.html"
@@ -26,7 +52,7 @@
     </div>
   </header>
   <div class="bg-[#f5f5f5] h-screen relative">
-    <img src="./assets/img2.png" alt="" class="absolute z-[0] -top-10 h-[100%] right-0 object-cover" />
+    <img src="./assets/HydrogenGenerator.png" alt="" class="absolute z-[0] -top-10 h-[100%] right-0 object-cover" />
     <div class="w-[95%] max-w-[90%] mx-auto">
       <div class="w-full lg:w-[55%] relative z-1 space-y-[30px] py-[30px]">
         <div class="flex items-center gap-3.5">
@@ -71,8 +97,11 @@
                   title: 'Hydrogen Generation through Electrolysis',
                   content: [
                     { text: 'Alkaline Electrolysis', url: './HydrogenElectrolysis/Alkaline Electrolysis/alkaline-electrolysics.html' },
-                    { text: 'PEM (Proton Exchange Membrane) Electrolysis', url: './HydrogenElectrolysis/PEM_Electrolysis/PEM-electrolysis.html' }
-                  ]
+                    { text: 'PEM (Proton Exchange Membrane) Electrolysis', url: './HydrogenElectrolysis/PEM_Electrolysis/PEM-electrolysis.html' },
+                    { text: 'Study of hydrogen  using an electrolyzer', url: './HydrogenElectrolysis/Study of Hydrogen/study-of-hydrogen.html' },
+                    { text: 'Renewable Hydrogen Integration', url: './HydrogenElectrolysis/Renewable Hydrogen Integration/renewable-hydrogen-integration.html' }
+                   
+                    ]
                 },
                 {
                   title: 'Hydrogen Storage',
