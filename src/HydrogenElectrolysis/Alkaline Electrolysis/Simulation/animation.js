@@ -11,7 +11,11 @@ function initializeBalls() {
     }
   }
   const h2oClassName = "BLUE_H2O_BALL moveBlueH2OBalls";
+<<<<<<< Updated upstream
   const h2oSrc = "../../../assets/KOH+H2O.png";
+=======
+  const h2oSrc = "../../../assets/H2O.png";
+>>>>>>> Stashed changes
   const h2oWidth = "!w-[10%] sm:!w-[18%]";
   const h2oSelector = ".BLUE_H2O_BALLS_ANIMATIONS";
   const ooClassName = "BLUE_OO_BALL moveBlueOOBalls";
