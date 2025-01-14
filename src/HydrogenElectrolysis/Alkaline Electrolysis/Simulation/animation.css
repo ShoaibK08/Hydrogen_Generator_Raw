@@ -34,33 +34,30 @@ body::-webkit-scrollbar {
   }
 }
 
-/* .halftone {
-	background-image: radial-gradient(circle at center, rgb(73, 73, 73) 0.04rem, transparent 0), radial-gradient(circle at center, rgb(79, 79, 79) 0.04rem, transparent 0);
-	background-size: 0.4rem 0.4rem;
-	background-position: 0 0, 0.2rem 0.2rem;
-} */
 
 .moveOrangeH2Balls {
   animation: moveOrangeH2Balls var(--duration) linear infinite;
   /* width: 40px; */
 }
+
 @keyframes moveOrangeH2Balls {
   0% {
     top: 30%;
-    left: 50%;
+    left: 40%; /* Start from a more left position */
     opacity: 1;
   }
   50% {
     top: 30%;
-    left: 46.5%;
+    left: 60%; /* Move further right */
     opacity: 0.8;
   }
   100% {
     top: 30%;
-    left: 43%;
+    left: 60%; /* Move even further right */
     opacity: 0;
   }
 }
+
 
 .moveBlueH2OBalls {
   animation: moveBlueH2OBalls var(--duration) linear;
@@ -86,45 +83,27 @@ body::-webkit-scrollbar {
   50% {
     top: 72%;
     left: 67.5%;
-    opacity: 1;
+    opacity: 0.5;
   }
-  60% {
-    top: 65%;
-    left: 60%;
-    opacity: 1;
-  }
-  70% {
-    top: 55%;
-    left: 55%;
-    opacity: 1;
-  }
-  80% {
-    top: 45%;
-    left: 55%;
-    opacity: 1;
-  }
-  90% {
-    top: 35%;
-    left: 55%;
-    opacity: 1;
-  }
+ 
   100% {
-    top: 30%;
-    left: 55%;
+    top: 70%;
+    left: 20%;
     opacity: 0;
   }
 }
 
 .moveBlueOOBalls {
-  animation: moveBlueOOBall var(--duration) linear;
+  animation: moveBlueOOBall var(--duration) linear 2s forwards;
   position: absolute;
   z-index: 1000;
   width: 45%;
+  opacity: 0;
 }
 @keyframes moveBlueOOBall {
   0% {
     top: 30%;
-    left: 55%;
+    left: 62%;
     opacity: 1;
   }
   25% {
