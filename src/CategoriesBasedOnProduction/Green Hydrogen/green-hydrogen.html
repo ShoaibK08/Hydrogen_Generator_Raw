@@ -12,10 +12,12 @@
   <script defer src="../../assets/alpinejs.js"></script>
   <script src="https://unpkg.com/split-type"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-
+  <link rel="stylesheet" href="../../assets/all-page-animation.css"/>
 </head>
 
 <body>
+  <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
+  x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
   <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }">
     <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
       <a href="../../home.html">
@@ -226,8 +228,9 @@
       </div>
     </div>
   </div>
+</div>
   <script></script>
-  <script src="../../script.js"></script>
+  <!-- <script src="../../script.js"></script> -->
 
 </body>
 
