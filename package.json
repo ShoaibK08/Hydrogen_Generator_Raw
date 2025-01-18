@@ -1,10 +1,8 @@
 {
-  "name": "HYDROGEN-SIMTEL-DEMO",
-
-  
+  "name": "hydrogen-simtel-demo",
   "version": "1.0.0",
   "description": "Virtual learning lab to learn about HYDROGEN GENERATOR.",
-  "main": "src/main.js", 
+  "main": "src/main.js",
   "author": "NVIS",
   "license": "UNLICENSED",
   "scripts": {
@@ -21,7 +19,8 @@
     "electron-is-dev": "^2.0.0",
     "electron-packager": "^17.1.2",
     "electron-rebuild": "^3.2.9",
-    "justgage": "^1.6.1"
+    "justgage": "^1.6.1",
+    "tailwindcss": "^3.4.17"
   },
   "build": {
     "appId": "com.nvis.ev-simtel",
@@ -66,5 +65,6 @@
     "justgage": "^1.6.1",
     "raphael": "^2.3.0",
     "react-router-dom": "^6.27.0"
-  }
+  },
+  "keywords": []
 }
