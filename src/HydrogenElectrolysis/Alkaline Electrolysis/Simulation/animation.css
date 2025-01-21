@@ -42,17 +42,17 @@ body::-webkit-scrollbar {
 
 @keyframes moveOrangeH2Balls {
   0% {
-    top: 30%;
+    top: 67%;
     left: 40%; /* Start from a more left position */
     opacity: 1;
   }
   50% {
-    top: 30%;
+    top: 67%;
     left: 60%; /* Move further right */
     opacity: 0.8;
   }
   100% {
-    top: 30%;
+    top: 67%;
     left: 60%; /* Move even further right */
     opacity: 0;
   }
@@ -83,12 +83,13 @@ body::-webkit-scrollbar {
   50% {
     top: 72%;
     left: 67.5%;
-    opacity: 0.5;
+    opacity: 1;
   }
+
  
   100% {
     top: 70%;
-    left: 20%;
+    left: 25%;
     opacity: 0;
   }
 }
@@ -102,12 +103,12 @@ body::-webkit-scrollbar {
 }
 @keyframes moveBlueOOBall {
   0% {
-    top: 30%;
+    top: 67%;
     left: 62%;
     opacity: 1;
   }
   25% {
-    top: 30%;
+    top: 67%;
     left: 71%;
   }
   50% {
@@ -182,12 +183,12 @@ body::-webkit-scrollbar {
 }
 @keyframes moveRedH2Ball {
   0% {
-    top: 30%;
-    left: 38%;
+    top: 67%;
+    left: 35%;
     opacity: 1;
   }
   25% {
-    top: 30%;
+    top: 67%;
     left: 23%;
   }
   50% {
@@ -381,4 +382,118 @@ body::-webkit-scrollbar {
   width: 10px;
   border-radius: 9999px;
   background: gray;
+}
+
+
+
+/* Add these CSS rules to your existing styles */
+
+.charge-symbols {
+  font-size: 20px;
+}
+
+.oh-text {
+  font-size: 20px;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+}
+
+@media (max-width: 3000px) {
+  .charge-symbols {
+    font-size: 18px;
+  }
+  .oh-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 2700px) {
+  .charge-symbols {
+    font-size: 16px;
+  }
+  .oh-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1920px) {
+  .charge-symbols {
+    font-size: 14px;
+  }
+  .oh-text {
+    font-size: 14px;
+  }
+  .dot {
+    width: 2.5px;
+    height: 2.5px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .charge-symbols {
+    font-size: 12px;
+  }
+  .oh-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .charge-symbols {
+    font-size: 11px;
+  }
+  .oh-text {
+    font-size: 11px;
+  }
+  .dot {
+    width: 2px;
+    height: 2px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .charge-symbols {
+    font-size: 10px;
+  }
+  .oh-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .charge-symbols {
+    font-size: 9px;
+  }
+  .oh-text {
+    font-size: 9px;
+  }
+  .dot {
+    width: 1.5px;
+    height: 1.5px;
+  }
+}
+
+@media (max-width: 676px) {
+  .charge-symbols {
+    font-size: 8px;
+  }
+  .oh-text {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 450px) {
+  .charge-symbols {
+    font-size: 7px;
+  }
+  .oh-text {
+    font-size: 7px;
+  }
+  .dot {
+    width: 1px;
+    height: 1px;
+  }
 }
