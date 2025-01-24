@@ -1,57 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Material Compatibility</title>
-    <script src="../../assets/tailwind.min.css"></script>
-    <link rel="stylesheet" href="../../assets/main.css" />
-    <script defer src="../../assets/main.js"></script>
-    <script defer src="../../assets/alpinejs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <link rel="stylesheet" href="../../assets/all-page-animation.css" />
-  </head>
 
-  <body>
-    <div
-      class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
-      x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)"
-    >
-      <header
-        class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white"
-        x-data="{ isOpen: false }"
-        style="position: sticky; top: 0; z-index: 1200"
-      >
-        <div
-          class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full"
-        >
-          <a href="../../home.html">
-            <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material Compatibility</title>
+  <script src="../../assets/tailwind.min.css"></script>
+  <link rel="stylesheet" href="../../assets/main.css" />
+  <script defer src="../../assets/main.js"></script>
+  <script defer src="../../assets/alpinejs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <link rel="stylesheet" href="../../assets/all-page-animation.css" />
+  <script src="../../content.js"></script>
+</head>
+
+<body>
+  <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
+    x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
+    <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
+      style="position: sticky; top: 0; z-index: 1200">
+      <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
+        <a href="../../home.html">
+          <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <button @click="isOpen = !isOpen"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
+          </button>
+          <a href="../../home.html"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
           </a>
-          <div class="flex items-center gap-2 sm:gap-4">
-            <button
-              @click="isOpen = !isOpen"
-              class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100"
-            >
-              <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
-            </button>
-            <a
-              href="../../home.html"
-              class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100"
-            >
-              <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
-            </a>
-          </div>
         </div>
+      </div>
+      <div id="headerAccordion" x-show="isOpen" @click.outside="isOpen = false"
+        class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32">
         <div
-          id="headerAccordion"
-          x-show="isOpen"
-          @click.outside="isOpen = false"
-          class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32"
-        >
-          <div
-            class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
-            x-data="{ 
+          class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
+          x-data="{ 
           activeAccordion: null,
           items: [
             {
@@ -177,121 +164,185 @@
               }
             })
           }
-        }"
-            @click.outside="activeAccordion = null"
-          >
-            <template x-for="(item, index) in items" :key="index">
-              <div class="relative font-inter antialiased text-sm lg:text-base">
-                <div
-                  :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'"
-                >
-                  <h2
-                    class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group"
-                  >
-                    <button
-                      :id="'faqs-title-' + index"
-                      type="button"
-                      class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
-                      :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
-                      @click="activeAccordion = activeAccordion === index ? null : index"
-                      :aria-expanded="activeAccordion === index"
-                      :aria-controls="'faqs-text-' + index"
-                    >
-                      <p
-                        class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2"
-                        x-text="item.title"
-                      ></p>
-                      <div
-                        class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
-                        :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'"
-                      >
-                        <img
-                          src="../../assets/icon3.png"
-                          alt=""
-                          class="transition-all duration-700"
-                          :class="activeAccordion === index ? 'rotate-180' : ''"
-                        />
-                      </div>
-                    </button>
-                  </h2>
-                  <div
-                    :id="'faqs-text-' + index"
-                    role="region"
-                    :aria-labelledby="'faqs-title-' + index"
-                    class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
-                    :class="activeAccordion === index ? 'block' : 'hidden'"
-                  >
-                    <div class="overflow-hidden flex flex-col gap-3.5">
-                      <template x-for="line in item.content" :key="line.text">
-                        <a
-                          :href="line.url"
-                          class="hover:text-blue-600 transition-colors duration-300"
-                          x-text="line.text"
-                        ></a>
-                      </template>
+        }" @click.outside="activeAccordion = null">
+          <template x-for="(item, index) in items" :key="index">
+            <div class="relative font-inter antialiased text-sm lg:text-base">
+              <div :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'">
+                <h2 class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group">
+                  <button :id="'faqs-title-' + index" type="button"
+                    class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
+                    :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
+                    @click="activeAccordion = activeAccordion === index ? null : index"
+                    :aria-expanded="activeAccordion === index" :aria-controls="'faqs-text-' + index">
+                    <p class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2" x-text="item.title"></p>
+                    <div
+                      class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
+                      :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'">
+                      <img src="../../assets/icon3.png" alt="" class="transition-all duration-700"
+                        :class="activeAccordion === index ? 'rotate-180' : ''" />
                     </div>
+                  </button>
+                </h2>
+                <div :id="'faqs-text-' + index" role="region" :aria-labelledby="'faqs-title-' + index"
+                  class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
+                  :class="activeAccordion === index ? 'block' : 'hidden'">
+                  <div class="overflow-hidden flex flex-col gap-3.5">
+                    <template x-for="line in item.content" :key="line.text">
+                      <a :href="line.url" class="hover:text-blue-600 transition-colors duration-300"
+                        x-text="line.text"></a>
+                    </template>
                   </div>
                 </div>
               </div>
-            </template>
-          </div>
-        </div>
-      </header>
-
-      <div class="bg-[#f5f5f5] min-h-screen">
-        <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
-          <div class="flex items-center gap-3.5">
-            <a
-              href="../../home.html"
-              class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]"
-            >
-              <img src="../../assets/icon5.png" alt="" class="" />
-            </a>
-            <h3
-              class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium"
-            >
-              Material Compatibility
-            </h3>
-          </div>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
-            <img
-              src="../../assets/materials-compatibility.jpg"
-              alt=""
-              class="mx-auto shadow-lg rounded-2xl"
-            />
-            <div
-              class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center"
-            >
-              <h3
-                class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold"
-              >
-                Overview
-              </h3>
-              <p
-                class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal"
-              >
-                Material compatibility is a critical safety requirement when
-                working with hydrogen, as it can interact with certain materials
-                in ways that may lead to failure or accidents. Hydrogen can
-                cause embrittlement in metals, making them brittle and prone to
-                cracking, particularly under high pressure or low temperatures.
-                This is especially true for materials like steel and aluminum,
-                which may weaken over time when exposed to hydrogen. It is
-                essential to use materials that are resistant to
-                hydrogen-induced damage, such as specific alloys and composite
-                materials, in pipelines, storage tanks, and other
-                infrastructure. Proper material selection ensures the structural
-                integrity of hydrogen systems, reducing the risk of leaks,
-                failures, and potential explosions. Regular inspections and
-                testing of materials used in hydrogen systems are also necessary
-                to identify any signs of degradation.
-              </p>
             </div>
+          </template>
+        </div>
+      </div>
+    </header>
+
+    <div class="bg-[#f5f5f5] min-h-screen">
+      <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
+        <div class="flex items-center gap-3.5">
+          <a href="../../home.html"
+            class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]">
+            <img src="../../assets/icon5.png" alt="" class="" />
+          </a>
+          <h3 class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium">
+            Material Compatibility
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
+          <img src="../../assets/materials-compatibility.jpg" alt="" class="mx-auto shadow-lg rounded-2xl" />
+          <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center">
+            <h3 class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold">
+              Overview
+            </h3>
+            <p class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal"> Material compatibility is one of
+              the most critical safety requirements when working with hydrogen, as its unique properties can interact
+              with certain materials in ways that may lead to failure, damage, or even catastrophic accidents. Hydrogen
+              is a highly reactive gas that can cause a variety of issues when it comes into contact with different
+              materials, particularly metals. Understanding how hydrogen affects these materials and ensuring that
+              appropriate materials are used in the construction and maintenance of hydrogen systems is essential to
+              maintaining safety and reliability. Without proper material selection and regular monitoring, hydrogen
+              systems can experience significant degradation, leading to leaks, structural failures, and in extreme
+              cases, explosions.
+              One of the most significant risks associated with hydrogen is its ability to cause embrittlement in
+              metals,
+              <span id="dots">...</span>
+              <span id="more" style="display: none">a phenomenon that makes metals brittle and prone to cracking.
+                Hydrogen embrittlement occurs when
+                hydrogen atoms diffuse into the metal's structure and interact with the metal’s crystalline lattice.
+                These
+                interactions can reduce the metal's ductility, making it more likely to crack or fail under stress. The
+                embrittlement effect is particularly concerning in metals used in high-pressure environments, such as
+                hydrogen storage tanks, pipelines, and valves. As hydrogen gas is often stored at very high pressures to
+                increase energy density, the structural integrity of the materials used to contain it is put under
+                constant stress. Over time, the presence of hydrogen can cause metals like steel and aluminum to lose
+                their strength, and the material may begin to exhibit signs of cracking, pitting, or even complete
+                structural failure.
+                Steel is one of the most commonly used materials in hydrogen systems, but it is particularly susceptible
+                to hydrogen embrittlement, especially when exposed to high pressures or low temperatures. Steel used in
+                hydrogen systems must be carefully chosen based on its composition and its resistance to
+                hydrogen-induced
+                damage. High-strength steels, for example, may have an increased risk of embrittlement under hydrogen
+                exposure, whereas low-alloy steels or stainless steels may offer better resistance. However, even these
+                materials can suffer from hydrogen embrittlement if not properly selected or maintained. To mitigate
+                this
+                risk, advanced materials with specific properties that resist hydrogen-induced degradation are
+                increasingly being used in hydrogen infrastructure.
+                Aluminum is another material commonly used in hydrogen systems, but it, too, can suffer from hydrogen
+                embrittlement under certain conditions. Aluminum is generally more resistant to corrosion than steel,
+                which is why it is often used in lightweight hydrogen storage applications. However, when exposed to
+                hydrogen at high pressures or low temperatures, aluminum can also become embrittled and prone to
+                failure.
+                Hydrogen can interact with the surface of aluminum alloys, leading to the formation of cracks and
+                weakening the material. While aluminum alloys may offer advantages in certain applications, such as in
+                transportable hydrogen tanks, they must be carefully selected to ensure they are suitable for hydrogen
+                storage. Materials that are less susceptible to embrittlement, such as certain grades of stainless steel
+                and specialized alloys, may be more appropriate for high-pressure hydrogen systems.
+                The interaction between hydrogen and metals is not limited to embrittlement. Hydrogen can also cause a
+                phenomenon known as "hydrogen-induced cracking" (HIC), which is a type of corrosion that occurs in steel
+                and other metals when they are exposed to hydrogen under stress. In HIC, hydrogen atoms diffuse into the
+                metal and react with the metal to form a brittle crack at the surface. The crack can propagate over
+                time,
+                weakening the material and potentially leading to failure. This type of degradation is particularly
+                dangerous in critical components of hydrogen systems, such as pipelines, valves, and storage tanks,
+                where
+                structural integrity is essential for maintaining safety. To prevent HIC, materials that are less prone
+                to
+                this type of corrosion, such as specialized alloys and composite materials, should be used in high-risk
+                applications.
+                To ensure the safe operation of hydrogen infrastructure, it is essential to select materials that are
+                resistant to hydrogen-induced damage. Several materials are specifically designed or treated to reduce
+                the
+                risk of hydrogen embrittlement and cracking. High-strength alloys, such as nickel alloys, are commonly
+                used in hydrogen systems due to their excellent resistance to embrittlement. Nickel-based alloys, such
+                as
+                Inconel, are highly resistant to hydrogen-induced degradation and are often used in critical components
+                such as valves, fittings, and pipework. These alloys are particularly useful in high-pressure
+                environments
+                where hydrogen is stored and transported at extreme pressures, as they maintain their strength and
+                structural integrity even when exposed to hydrogen.
+                Another material that has been found to perform well in hydrogen systems is composite materials, which
+                can
+                be used in the construction of pressure vessels and storage tanks. Composite materials, made from fibers
+                such as carbon or glass embedded in a polymer matrix, offer high strength-to-weight ratios and can be
+                engineered to withstand the stresses of hydrogen storage. These materials are resistant to hydrogen
+                embrittlement and corrosion and can provide a safer alternative to traditional metallic materials in
+                certain applications. Composite pressure vessels, for example, are already being used in some hydrogen
+                storage systems and are proving to be effective in reducing the risks associated with hydrogen
+                embrittlement. However, while composite materials are resistant to hydrogen damage, they still require
+                careful testing and inspection to ensure their long-term durability.
+                The process of material selection is crucial not only for the prevention of embrittlement and cracking
+                but
+                also for ensuring the overall safety of hydrogen infrastructure. Materials must be chosen based on the
+                specific operating conditions of the system, including the pressure, temperature, and environmental
+                conditions to which they will be exposed. The compatibility of materials with hydrogen gas must be
+                thoroughly tested to ensure that they can withstand the stress and potential degradation that may occur
+                over time. In addition to choosing the right materials, it is also essential to implement regular
+                inspection and testing procedures to monitor the condition of materials used in hydrogen systems.
+                Inspections play a critical role in identifying signs of material degradation before they lead to
+                failures. Visual inspections, ultrasonic testing, and other non-destructive testing methods can be used
+                to
+                detect cracks, corrosion, or other signs of wear in materials used in hydrogen infrastructure. Regular
+                inspections should be conducted at key points in the system, including storage tanks, pipelines, valves,
+                and other critical components. These inspections help ensure that the materials remain intact and that
+                no
+                hydrogen leaks are present, reducing the risk of accidents. Any identified signs of degradation should
+                be
+                addressed immediately through maintenance, repairs, or material replacement to prevent potential
+                failures.
+                The longevity and reliability of hydrogen systems depend largely on the materials used to construct
+                them,
+                as well as the ongoing maintenance and monitoring of these materials. As the use of hydrogen continues
+                to
+                grow in energy, transportation, and industrial applications, the importance of material compatibility
+                will
+                only increase. Research and development efforts are continually advancing to identify new materials that
+                can safely and efficiently store, transport, and utilize hydrogen without the risks associated with
+                embrittlement, cracking, or corrosion. As these materials are developed and integrated into hydrogen
+                infrastructure, the safety and reliability of hydrogen systems will continue to improve.
+                In conclusion, material compatibility is a fundamental aspect of ensuring the safety and reliability of
+                hydrogen infrastructure. Hydrogen’s ability to cause embrittlement and cracking in metals makes it
+                critical to select materials that are resistant to hydrogen-induced damage. Special alloys and composite
+                materials, such as nickel-based alloys and carbon-fiber composites, are increasingly used to reduce the
+                risks associated with hydrogen exposure. Regular inspection and testing of materials are also necessary
+                to
+                detect any signs of degradation and prevent accidents. By focusing on proper material selection and
+                ongoing monitoring, the risks of leaks, failures, and explosions in hydrogen systems can be minimized,
+                ensuring the safe use of hydrogen as an energy source in a variety of applications.
+              </span>
+              <button onclick="myFunction()" id="myBtn" style="color: blue">
+                Read more..
+              </button>
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <script></script>
-    <!-- <script   src="../../script.js"></script> -->
-  </body>
+  </div>
+  <script></script>
+  <!-- <script   src="../../script.js"></script> -->
+</body>
+
 </html>
