@@ -1,57 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blue Hydrogen</title>
-    <script src="../../assets/tailwind.min.css"></script>
-    <link rel="stylesheet" href="../../assets/main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <script defer src="../../assets/main.js"></script>
-    <script defer src="../../assets/alpinejs.js"></script>
-    <link rel="stylesheet" href="../../assets/all-page-animation.css" />
-  </head>
 
-  <body>
-    <div
-      class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
-      x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)"
-    >
-      <header
-        class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white"
-        x-data="{ isOpen: false }"
-        style="position: sticky; top: 0; z-index: 1200"
-      >
-        <div
-          class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full"
-        >
-          <a href="../../home.html">
-            <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Hydrogen</title>
+  <script src="../../assets/tailwind.min.css"></script>
+  <link rel="stylesheet" href="../../assets/main.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script defer src="../../assets/main.js"></script>
+  <script defer src="../../assets/alpinejs.js"></script>
+  <link rel="stylesheet" href="../../assets/all-page-animation.css" />
+  <script src="../../content.js"></script>
+
+</head>
+
+<body>
+  <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
+    x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
+    <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
+      style="position: sticky; top: 0; z-index: 1200">
+      <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
+        <a href="../../home.html">
+          <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <button @click="isOpen = !isOpen"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
+          </button>
+          <a href="../../home.html"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
           </a>
-          <div class="flex items-center gap-2 sm:gap-4">
-            <button
-              @click="isOpen = !isOpen"
-              class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100"
-            >
-              <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
-            </button>
-            <a
-              href="../../home.html"
-              class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100"
-            >
-              <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
-            </a>
-          </div>
         </div>
+      </div>
+      <div id="headerAccordion" x-show="isOpen" @click.outside="isOpen = false"
+        class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32">
         <div
-          id="headerAccordion"
-          x-show="isOpen"
-          @click.outside="isOpen = false"
-          class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32"
-        >
-          <div
-            class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
-            x-data="{ 
+          class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
+          x-data="{ 
           activeAccordion: null,
           items: [
             {
@@ -177,119 +165,161 @@
               }
             })
           }
-        }"
-            @click.outside="activeAccordion = null"
-          >
-            <template x-for="(item, index) in items" :key="index">
-              <div class="relative font-inter antialiased text-sm lg:text-base">
-                <div
-                  :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'"
-                >
-                  <h2
-                    class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group"
-                  >
-                    <button
-                      :id="'faqs-title-' + index"
-                      type="button"
-                      class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
-                      :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
-                      @click="activeAccordion = activeAccordion === index ? null : index"
-                      :aria-expanded="activeAccordion === index"
-                      :aria-controls="'faqs-text-' + index"
-                    >
-                      <p
-                        class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2"
-                        x-text="item.title"
-                      ></p>
-                      <div
-                        class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
-                        :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'"
-                      >
-                        <img
-                          src="../../assets/icon3.png"
-                          alt=""
-                          class="transition-all duration-700"
-                          :class="activeAccordion === index ? 'rotate-180' : ''"
-                        />
-                      </div>
-                    </button>
-                  </h2>
-                  <div
-                    :id="'faqs-text-' + index"
-                    role="region"
-                    :aria-labelledby="'faqs-title-' + index"
-                    class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
-                    :class="activeAccordion === index ? 'block' : 'hidden'"
-                  >
-                    <div class="overflow-hidden flex flex-col gap-3.5">
-                      <template x-for="line in item.content" :key="line.text">
-                        <a
-                          :href="line.url"
-                          class="hover:text-blue-600 transition-colors duration-300"
-                          x-text="line.text"
-                        ></a>
-                      </template>
+        }" @click.outside="activeAccordion = null">
+          <template x-for="(item, index) in items" :key="index">
+            <div class="relative font-inter antialiased text-sm lg:text-base">
+              <div :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'">
+                <h2 class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group">
+                  <button :id="'faqs-title-' + index" type="button"
+                    class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
+                    :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
+                    @click="activeAccordion = activeAccordion === index ? null : index"
+                    :aria-expanded="activeAccordion === index" :aria-controls="'faqs-text-' + index">
+                    <p class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2" x-text="item.title"></p>
+                    <div
+                      class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
+                      :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'">
+                      <img src="../../assets/icon3.png" alt="" class="transition-all duration-700"
+                        :class="activeAccordion === index ? 'rotate-180' : ''" />
                     </div>
+                  </button>
+                </h2>
+                <div :id="'faqs-text-' + index" role="region" :aria-labelledby="'faqs-title-' + index"
+                  class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
+                  :class="activeAccordion === index ? 'block' : 'hidden'">
+                  <div class="overflow-hidden flex flex-col gap-3.5">
+                    <template x-for="line in item.content" :key="line.text">
+                      <a :href="line.url" class="hover:text-blue-600 transition-colors duration-300"
+                        x-text="line.text"></a>
+                    </template>
                   </div>
                 </div>
               </div>
-            </template>
-          </div>
-        </div>
-      </header>
-
-      <div class="bg-[#f5f5f5] min-h-screen">
-        <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
-          <div class="flex items-center gap-3.5">
-            <a
-              href="../../home.html"
-              class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]"
-            >
-              <img src="../../assets/icon5.png" alt="" class="" />
-            </a>
-            <h3
-              class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium"
-            >
-              Blue Hydrogen
-            </h3>
-          </div>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
-            <img
-              src="../../assets/BlueHydrogen.png"
-              alt=""
-              class="mx-auto shadow-lg rounded-2xl"
-            />
-            <div
-              class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center"
-            >
-              <h3
-                class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold"
-              >
-                Overview
-              </h3>
-              <p
-                class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal"
-              >
-                Blue hydrogen is generated similarly to grey hydrogen through
-                steam methane reforming (SMR), but with an added step of carbon
-                capture and storage (CCS) to reduce the environmental impact.
-                During the production process, the CO₂ emissions produced are
-                captured and stored in geological formations or utilized in
-                industrial applications, significantly lowering the carbon
-                footprint. This approach can capture up to 90% of the emitted
-                CO₂, making blue hydrogen a more environmentally responsible
-                option compared to grey hydrogen. Blue hydrogen serves as a
-                transitional solution, leveraging existing natural gas resources
-                while mitigating some environmental concerns, and is seen as a
-                step towards cleaner energy production until green hydrogen
-                becomes more economically viable.
-              </p>
             </div>
+          </template>
+        </div>
+      </div>
+    </header>
+
+    <div class="bg-[#f5f5f5] min-h-screen">
+      <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
+        <div class="flex items-center gap-3.5">
+          <a href="../../home.html"
+            class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]">
+            <img src="../../assets/icon5.png" alt="" class="" />
+          </a>
+          <h3 class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium">
+            Blue Hydrogen
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
+          <img src="../../assets/BlueHydrogen.png" alt="" class="mx-auto shadow-lg rounded-2xl" />
+          <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center">
+            <h3 class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold">
+              Overview
+            </h3>
+            <p class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal">
+              Blue hydrogen is produced through a process similar to that of grey hydrogen, utilizing steam methane
+              reforming (SMR) to extract hydrogen from natural gas. However, blue hydrogen incorporates an additional
+              critical step: carbon capture and storage (CCS). This technology captures the carbon dioxide (CO₂)
+              emissions generated during the SMR process, preventing them from being released into the atmosphere. The
+              captured CO₂ is then either stored in geological formations, such as depleted oil and gas reservoirs or
+              saline aquifers, or utilized in industrial applications, including enhanced oil recovery or the production
+              of chemicals and materials. This integration of CCS significantly reduces the carbon footprint of hydrogen
+              production, making blue hydrogen a more environmentally responsible option compared to grey hydrogen.
+              The environmental benefits
+              <span id="dots">...</span>
+              <span id="more" style="display: none"> of blue hydrogen stem primarily from the ability of CCS technology
+                to capture up to 90% of the CO₂ emissions produced during the SMR process. By preventing these emissions
+                from contributing to atmospheric greenhouse gas levels, blue hydrogen aligns more closely with global
+                climate goals, including carbon neutrality and the reduction of global warming. This makes it an
+                attractive transitional solution in the shift towards cleaner energy systems, as it leverages existing
+                natural gas infrastructure while addressing some of the environmental concerns associated with
+                conventional hydrogen production methods.
+                Blue hydrogen plays a pivotal role in sectors that are challenging to electrify or decarbonize.
+                Industries such as chemical manufacturing, steel production, and refining are among the largest
+                consumers of hydrogen, relying on it as a feedstock or energy source. Transitioning these industries
+                from grey to blue hydrogen can result in substantial reductions in carbon emissions while maintaining
+                the efficiency and scalability of their operations. Furthermore, blue hydrogen is increasingly being
+                explored for use in power generation, where it can be blended with natural gas to lower the carbon
+                intensity of electricity production or used in dedicated hydrogen turbines to achieve near-zero
+                emissions.
+                Another significant advantage of blue hydrogen is its potential to support the development of a global
+                hydrogen economy. By utilizing CCS to mitigate emissions, blue hydrogen enables the continued use of
+                natural gas as a resource, providing a cost-effective and readily available means of scaling up hydrogen
+                production. This can help meet the growing demand for hydrogen across various sectors, including
+                transportation, industrial processes, and energy storage, while paving the way for the eventual
+                transition to green hydrogen.
+                Despite its advantages, blue hydrogen is not without challenges. The implementation of CCS technology
+                requires substantial investment and poses technical and logistical hurdles. Capturing, transporting, and
+                storing CO₂ safely and efficiently necessitates the development of extensive infrastructure, including
+                pipelines, storage facilities, and monitoring systems. Additionally, the energy-intensive nature of the
+                CCS process can reduce the overall efficiency of hydrogen production, raising questions about its
+                cost-effectiveness compared to direct electrification or renewable energy-based solutions.
+                The sustainability of blue hydrogen also depends on minimizing upstream emissions associated with
+                natural gas extraction and transportation. Methane leaks, which can occur during these processes, pose a
+                significant environmental concern due to methane's high global warming potential. Addressing these leaks
+                is critical to ensuring that the net environmental benefits of blue hydrogen outweigh its drawbacks.
+                Innovations in methane detection and mitigation technologies, as well as stricter regulations on natural
+                gas operations, are essential for enhancing the sustainability of blue hydrogen production.
+                Policy and regulatory frameworks play a crucial role in advancing blue hydrogen as a viable energy
+                solution. Government incentives, carbon pricing mechanisms, and subsidies for CCS projects can help
+                offset the high costs associated with blue hydrogen production and infrastructure development.
+                International collaborations and knowledge-sharing initiatives are also fostering the adoption of best
+                practices and driving technological advancements in CCS and hydrogen production. As more countries
+                commit to ambitious climate targets, blue hydrogen is gaining traction as a key component of national
+                and regional decarbonization strategies.
+                The integration of blue hydrogen into existing energy systems offers a pathway to reduce emissions while
+                maintaining energy security and reliability. For instance, blue hydrogen can be used as a bridging fuel
+                in natural gas power plants, enabling a gradual transition to renewable energy sources without
+                disrupting grid stability. In transportation, blue hydrogen-powered fuel cell vehicles provide a cleaner
+                alternative to internal combustion engines, particularly for heavy-duty applications such as trucks,
+                buses, and trains. By replacing diesel or gasoline with hydrogen, these vehicles can significantly cut
+                emissions while delivering comparable performance and range.
+                As the global hydrogen market evolves, blue hydrogen is expected to play an essential role in
+                establishing the infrastructure and supply chains needed for a broader hydrogen economy. Investments in
+                blue hydrogen projects are creating opportunities for job growth, technological innovation, and
+                cross-sector collaboration. Additionally, the experience gained from implementing CCS technologies in
+                blue hydrogen production can inform the development of carbon management solutions for other industries,
+                further accelerating the transition to a low-carbon future.
+                One of the key factors driving the adoption of blue hydrogen is its ability to act as a transitional
+                solution while green hydrogen technologies mature. Green hydrogen, produced through electrolysis powered
+                by renewable energy, represents the ultimate goal for achieving a zero-carbon hydrogen economy. However,
+                the high costs and limited scalability of green hydrogen production currently hinder its widespread
+                adoption. In this context, blue hydrogen serves as a practical intermediary, allowing for immediate
+                emission reductions while supporting the development of renewable hydrogen infrastructure and
+                technologies.
+                Another area of innovation in blue hydrogen involves integrating renewable energy into the CCS process.
+                For example, renewable electricity can power the compressors and other equipment required for CO₂
+                capture and storage, further reducing the carbon intensity of the overall process. This hybrid approach
+                combines the strengths of both fossil and renewable energy sources, optimizing the environmental
+                performance of blue hydrogen production.
+                Public perception and acceptance are also critical to the success of blue hydrogen. Clear communication
+                about its benefits, limitations, and role in the energy transition can help build trust and support
+                among stakeholders, including policymakers, industry leaders, and the general public. Transparent
+                reporting on emission reductions, lifecycle assessments, and progress toward climate goals will be
+                essential in demonstrating the value of blue hydrogen as part of a broader clean energy strategy.
+                In conclusion, blue hydrogen represents a critical stepping stone in the journey toward a sustainable
+                energy future. By combining the scalability of natural gas-based hydrogen production with the
+                emission-reducing capabilities of CCS, blue hydrogen offers a practical solution to meet immediate
+                energy demands while reducing carbon emissions. Although challenges remain, ongoing advancements in
+                technology, policy support, and industry collaboration are paving the way for the widespread adoption of
+                blue hydrogen. As green hydrogen production becomes more economically viable, the role of blue hydrogen
+                may evolve, ultimately serving as a complementary component of a diverse and resilient clean energy
+                portfolio. For now, blue hydrogen stands as a testament to the potential of innovative solutions to
+                bridge the gap between fossil fuels and renewable energy, driving progress toward a cleaner, more
+                sustainable world.</span>
+                <button onclick="myFunction()" id="myBtn" style="color: blue">
+                  Read more..
+                </button>
+            </p>
           </div>
         </div>
       </div>
-      <script></script>
-      <!-- <script   src="../../script.js"></script> -->
     </div>
-  </body>
+    <script></script>
+    <!-- <script   src="../../script.js"></script> -->
+  </div>
+</body>
+
 </html>
