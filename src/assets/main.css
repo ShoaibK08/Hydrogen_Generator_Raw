@@ -7,10 +7,3 @@ body {
 #headerAccordion {
   transition: opacity 0.3s ease-in-out;
 }
-
-.text-sm{
-  height: 64vh;
-  overflow-y: auto;
-  text-align: justify;
-  padding: 2%;
-}
