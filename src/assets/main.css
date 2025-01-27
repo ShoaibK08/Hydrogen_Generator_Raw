@@ -10,5 +10,7 @@ body {
 
 .scroll{
   height: 64vh;
-   overflow-y: auto
+   overflow-y: auto;
+   text-align: justify;
+   padding:"2%"
 }
