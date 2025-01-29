@@ -87,44 +87,44 @@
               {
                 title: 'Hydrogen Storage',
                 content: [
-                  { text: 'Geological Hydrogen Storage', url: 'javascript:void(0)' },
-                  { text: 'Compressed Hydrogen', url: 'javascript:void(0)' },
-                  { text: 'Liquid Hydrogen', url: 'javascript:void(0)' },
-                  { text: 'Material based Hydrogen Storage', url: 'javascript:void(0)' },
-                  { text: 'Hydrogen Storage in Ammonia', url: 'javascript:void(0)' }
+                  { text: 'Geological Hydrogen Storage', url: './Hydrogen Storage/Geological Hydrogen Storage/geological-hydrogen-storage.html' },
+                  { text: 'Compressed Hydrogen', url: './Hydrogen Storage/Compressed Hydrogen/compressed-hydrogen.html' },
+                  { text: 'Liquid Hydrogen', url: './Hydrogen Storage/Liquid Hydrogen/liquid-hydrogen.html' },
+                  { text: 'Material based Hydrogen Storage', url: './Hydrogen Storage/MaterialBasedHydrogenStorage/material-based.html' },
+                  { text: 'Hydrogen Storage in Ammonia', url: './Hydrogen Storage/HydrogenStorageInAmmonia/hydrogen-storage-in-ammonia.html' }
                 ]
               },
               {
                 title: 'Hydrogen Distribution',
                 content: [
-                  { text: 'Hydrogen Pipelines', url: 'javascript:void(0)' },
-                  { text: 'Hydrogen Tankers', url: 'javascript:void(0)' },
-                  { text: 'Hydrogen Refueling Stations', url: 'javascript:void(0)' },
-                  { text: 'Ammonia as a Hydrogen Carrier', url: 'javascript:void(0)' }
+                  { text: 'Hydrogen Pipelines', url: './Hydrogen Distribution/Hydrogen Pipelines/hydrogen-pipelines.html' },
+                  { text: 'Hydrogen Tankers', url: './Hydrogen Distribution/Hydrogen Tankers/hydrogen-tankers.html' },
+                  { text: 'Hydrogen Refueling Stations', url: './Hydrogen Distribution/Hydrogen Refueling Stations/refueling-stations.html' },
+                  { text: 'Ammonia as a Hydrogen Carrier', url: './Hydrogen Distribution/Ammonia as a Hydrogen Carrier/ammonia-as-a-hydrogen-carrier.html' }
                 ]
               },
               {
                 title: 'Fuel Cell Fundamentals',
                 content: [
-                  { text: 'Introduction to Fuel Cell', url: 'javascript:void(0)' }
+                  { text: 'Introduction to Fuel Cell', url: './Fuel Cell Fundamentals/Introduction to Fuel Cell/intro-to-fuel-cell.html' }
                 ]
               },
               {
                 title: 'Categories of Fuel Cell',
                 content: [
-                  { text: 'Alkaline Fuel Cell', url: 'javascript:void(0)' },
-                  { text: 'PEM (Proton Exchange Membrane) Fuel Cell', url: 'javascript:void(0)' },
-                  { text: 'Microbial Fuel Cell', url: 'javascript:void(0)' },
-                  { text: 'Phosphoric Acid Fuel Cells (PAFC)', url: 'javascript:void(0)' },
-                  { text: 'Molten Carbonate Fuel Cells (MCFC)', url: 'javascript:void(0)' },
-                  { text: 'Solid Oxide Fuel Cells (SOFC)', url: 'javascript:void(0)' },
-                  { text: 'Direct Methanol Fuel Cells (DMFC)', url: 'javascript:void(0)' }
+                  { text: 'Alkaline Fuel Cell', url: './Categories of Fuell Cell/Alkaline Fuell Cell/alkaline-fuel-cell.html' },
+                  { text: 'PEM (Proton Exchange Membrane) Fuel Cell', url: './Categories of Fuell Cell/PEM Fuel Cell/pem-fuel-cell.html' },
+                  { text: 'Microbial Fuel Cell', url: './Categories of Fuell Cell/Microbial fuel Cell/microbial-fuel-cell.html' },
+                  { text: 'Phosphoric Acid Fuel Cells (PAFC)', url: './Categories of Fuell Cell/Phosphoric Acid Fuel Cells/pafc-fuel-cells.html' },
+                  { text: 'Molten Carbonate Fuel Cells (MCFC)', url: './Categories of Fuell Cell/Molten Carbonate Fuel Cell/molten-carbonate-fuel-cell.html' },
+                  { text: 'Solid Oxide Fuel Cells (SOFC)', url: './Categories of Fuell Cell/Solid Oxide Fuel Cells/solid-oxide-fuel-cells.html' },
+                  { text: 'Direct Methanol Fuel Cells (DMFC)', url: './Categories of Fuell Cell/Direct Methanol Fuel Cells/direct-methanol-fuel-cells.html' }
                 ]
               },
               {
                 title: 'Advanced Hydrogen Fuel Cell Experiments',
                 content: [
-                  { text: 'Test the fuel cell at different load condition', url: 'javascript:void(0)' },
+                  { text: 'Test the fuel cell at different load condition', url: './Advanced Hydrogen Fuel Cell Experiments/test-the-fuel-cell-at-diff-load-conditions.html' },
                   { text: 'Study of IV characteristics of fuel cell', url: 'javascript:void(0)' },
                   { text: 'Study of the Measurement of Fuel Cell Efficiency', url: 'javascript:void(0)' }
                 ]
@@ -132,7 +132,7 @@
               {
                 title: 'Hydrogen industrial Application',
                 content: [
-                  { text: 'Ammonia Production', url: 'javascript:void(0)' },
+                  { text: 'Ammonia Production', url: './Hydrogen Industrial Application/ammonia-production.html' },
                   { text: 'Methanol Production', url: 'javascript:void(0)' },
                   { text: 'Steelmaking', url: 'javascript:void(0)' },
                   { text: 'Concrete Production', url: 'javascript:void(0)' },
@@ -167,7 +167,7 @@
               })
             }
           }">
-            <template x-for="(item, index) in items" :key="index"">
+            <template x-for="(item, index) in items" :key="index">
             <div class=" relative border-[1px] border-[#DADADA] bg-white rounded-[10px] p-[15px] flex items-center
               justify-between relative cursor-pointer" :class="{'rounded-b-none': activeItem === index}"
               @click="activeItem === index ? activeItem = null : activeItem = index">
