@@ -1,57 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Steam Methane Reforming</title>
-    <script src="../../assets/tailwind.min.css"></script>
-    <link rel="stylesheet" href="../../assets/main.css" />
-    <script defer src="../../assets/main.js"></script>
-    <script defer src="../../assets/alpinejs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <link rel="stylesheet" href="../../assets/all-page-animation.css" />
-  </head>
 
-  <body>
-    <div
-      class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
-      x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)"
-    >
-      <header
-        class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white"
-        x-data="{ isOpen: false }"
-        style="position: sticky; top: 0; z-index: 1200"
-      >
-        <div
-          class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full"
-        >
-          <a href="../../home.html">
-            <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steam Methane Reforming</title>
+  <script src="../../assets/tailwind.min.css"></script>
+  <link rel="stylesheet" href="../../assets/main.css" />
+  <script defer src="../../assets/main.js"></script>
+  <script defer src="../../assets/alpinejs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <link rel="stylesheet" href="../../assets/all-page-animation.css" />
+</head>
+
+<body>
+  <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
+    x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
+    <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
+      style="position: sticky; top: 0; z-index: 1200">
+      <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
+        <a href="../../home.html">
+          <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <button @click="isOpen = !isOpen"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
+          </button>
+          <a href="../../home.html"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
           </a>
-          <div class="flex items-center gap-2 sm:gap-4">
-            <button
-              @click="isOpen = !isOpen"
-              class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100"
-            >
-              <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
-            </button>
-            <a
-              href="../../home.html"
-              class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100"
-            >
-              <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
-            </a>
-          </div>
         </div>
+      </div>
+      <div id="headerAccordion" x-show="isOpen" @click.outside="isOpen = false"
+        class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32">
         <div
-          id="headerAccordion"
-          x-show="isOpen"
-          @click.outside="isOpen = false"
-          class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32"
-        >
-          <div
-            class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
-            x-data="{ 
+          class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
+          x-data="{ 
           activeAccordion: null,
           items: [
             {
@@ -177,126 +163,168 @@
               }
             })
           }
-        }"
-            @click.outside="activeAccordion = null"
-          >
-            <template x-for="(item, index) in items" :key="index">
-              <div class="relative font-inter antialiased text-sm lg:text-base">
-                <div
-                  :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'"
-                >
-                  <h2
-                    class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group"
-                  >
-                    <button
-                      :id="'faqs-title-' + index"
-                      type="button"
-                      class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
-                      :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
-                      @click="activeAccordion = activeAccordion === index ? null : index"
-                      :aria-expanded="activeAccordion === index"
-                      :aria-controls="'faqs-text-' + index"
-                    >
-                      <p
-                        class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2"
-                        x-text="item.title"
-                      ></p>
-                      <div
-                        class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
-                        :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'"
-                      >
-                        <img
-                          src="../../assets/icon3.png"
-                          alt=""
-                          class="transition-all duration-700"
-                          :class="activeAccordion === index ? 'rotate-180' : ''"
-                        />
-                      </div>
-                    </button>
-                  </h2>
-                  <div
-                    :id="'faqs-text-' + index"
-                    role="region"
-                    :aria-labelledby="'faqs-title-' + index"
-                    class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
-                    :class="activeAccordion === index ? 'block' : 'hidden'"
-                  >
-                    <div class="overflow-hidden flex flex-col gap-3.5">
-                      <template x-for="line in item.content" :key="line.text">
-                        <a
-                          :href="line.url"
-                          class="hover:text-blue-600 transition-colors duration-300"
-                          x-text="line.text"
-                        ></a>
-                      </template>
+        }" @click.outside="activeAccordion = null">
+          <template x-for="(item, index) in items" :key="index">
+            <div class="relative font-inter antialiased text-sm lg:text-base">
+              <div :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'">
+                <h2 class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group">
+                  <button :id="'faqs-title-' + index" type="button"
+                    class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
+                    :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
+                    @click="activeAccordion = activeAccordion === index ? null : index"
+                    :aria-expanded="activeAccordion === index" :aria-controls="'faqs-text-' + index">
+                    <p class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2" x-text="item.title"></p>
+                    <div
+                      class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
+                      :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'">
+                      <img src="../../assets/icon3.png" alt="" class="transition-all duration-700"
+                        :class="activeAccordion === index ? 'rotate-180' : ''" />
                     </div>
+                  </button>
+                </h2>
+                <div :id="'faqs-text-' + index" role="region" :aria-labelledby="'faqs-title-' + index"
+                  class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
+                  :class="activeAccordion === index ? 'block' : 'hidden'">
+                  <div class="overflow-hidden flex flex-col gap-3.5">
+                    <template x-for="line in item.content" :key="line.text">
+                      <a :href="line.url" class="hover:text-blue-600 transition-colors duration-300"
+                        x-text="line.text"></a>
+                    </template>
                   </div>
                 </div>
               </div>
-            </template>
-          </div>
-        </div>
-      </header>
-
-      <div class="bg-[#f5f5f5] min-h-screen">
-        <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
-          <div class="flex items-center gap-3.5">
-            <a
-              href="../../home.html"
-              class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]"
-            >
-              <img src="../../assets/icon5.png" alt="" class="" />
-            </a>
-            <h3
-              class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium"
-            >
-              Steam Methane Reforming
-            </h3>
-          </div>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
-            <img
-              src="../../assets/Steam Methane Reforming.png"
-              alt=""
-              class="mx-auto shadow-lg rounded-2xl"
-            />
-            <div
-              class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center"
-            >
-              <h3
-                class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold"
-              >
-                Overview
-              </h3>
-              <p
-                class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal"
-              >
-                Steam Methane Reforming (SMR) is the most widely used method for
-                hydrogen production, accounting for a significant portion of
-                global hydrogen output. The process involves reacting methane
-                (CH₄), typically derived from natural gas, with steam at high
-                temperatures (700–1,000°C) in the presence of a catalyst. This
-                reaction produces hydrogen (H₂) and carbon monoxide (CO) as
-                primary outputs. In a subsequent step called the water-gas shift
-                reaction, the carbon monoxide reacts with additional steam to
-                produce more hydrogen and carbon dioxide (CO₂). SMR is an
-                efficient and cost-effective method, making it a preferred
-                choice for industrial-scale hydrogen production. However, it
-                relies on fossil fuels, resulting in significant CO₂ emissions,
-                which contribute to climate change. To address this, carbon
-                capture and storage (CCS) technologies are increasingly being
-                integrated with SMR to reduce emissions, producing what is known
-                as blue hydrogen. Despite its environmental challenges, SMR
-                remains a cornerstone of hydrogen production, particularly in
-                industries like ammonia synthesis, oil refining, and methanol
-                production. Advances in CCS and renewable alternatives are key
-                to making SMR more sustainable in the future energy landscape.
-              </p>
             </div>
+          </template>
+        </div>
+      </div>
+    </header>
+
+    <div class="bg-[#f5f5f5] min-h-screen">
+      <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
+        <div class="flex items-center gap-3.5">
+          <a href="../../home.html"
+            class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]">
+            <img src="../../assets/icon5.png" alt="" class="" />
+          </a>
+          <h3 class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium">
+            Steam Methane Reforming
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
+          <img src="../../assets/Steam Methane Reforming.png" alt="" class="mx-auto shadow-lg rounded-2xl" />
+          <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center">
+            <h3 class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold">
+              Overview
+            </h3>
+            <p class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal scroll">
+              Steam Methane Reforming (SMR) is currently the most widely used and established method for producing
+              hydrogen, contributing significantly to global hydrogen production. The process involves the reaction of
+              methane (CH₄), a major component of natural gas, with steam at high temperatures in the presence of a
+              catalyst. This chemical reaction, which typically occurs between 700 and 1,000°C, is known as the steam
+              reforming reaction, and it produces two primary products: hydrogen (H₂) and carbon monoxide (CO). The
+              reaction can be represented as: The hydrogen produced in this reaction is separated and purified for use
+              in various industrial
+              applications, such as in the production of ammonia, oil refining, and methanol synthesis. However, the
+              carbon monoxide generated in this initial reforming reaction is not the end of the process. A subsequent
+              reaction, known as the water-gas shift reaction, is performed to further increase the yield of hydrogen.
+              <span id="dots">...</span>
+              <span id="more" style="display: none"> In the water-gas shift reaction, carbon monoxide reacts with
+                additional steam to produce more hydrogen
+                and carbon dioxide (CO₂):
+                CH₄ + H₂O → CO + 3H₂
+                CO + H₂O → CO₂ + H₂
+                This step is essential for improving the hydrogen output and also for mitigating some of the effects of
+                the initial carbon monoxide formation. The final product of the SMR process is hydrogen gas, although
+                the process also results in the production of carbon dioxide, which is a greenhouse gas that contributes
+                to global warming. As the world moves toward decarbonizing industries and mitigating climate change, the
+                environmental impact of SMR has become a critical area of focus.
+                One of the main reasons SMR is favored for large-scale hydrogen production is its relative efficiency
+                and cost-effectiveness. The technology has been developed and optimized over many decades, making it a
+                well-established method in the industrial sector. It can be deployed at scale, producing hydrogen in
+                large quantities, which is crucial for sectors that require high volumes of hydrogen, such as the
+                chemical industry, refining, and manufacturing. Additionally, the cost of producing hydrogen via SMR is
+                typically lower compared to other methods like electrolysis, which currently requires more expensive
+                renewable energy inputs. For these reasons, SMR continues to dominate the global hydrogen production
+                landscape, despite the growing interest in cleaner alternatives.
+                However, the reliance on natural gas as the primary feedstock for SMR presents significant environmental
+                challenges. Natural gas is a fossil fuel, and its combustion and processing release carbon dioxide (CO₂)
+                and other pollutants into the atmosphere. As the demand for hydrogen increases in various sectors,
+                particularly in applications like fuel cells for transportation and energy storage, the environmental
+                footprint of SMR becomes a critical concern. The CO₂ emissions generated during the SMR process
+                contribute to climate change and the depletion of the ozone layer. This presents a significant dilemma
+                for industries that are seeking to reduce their carbon emissions while also producing hydrogen at scale.
+                To mitigate the environmental impact of SMR, one solution that has gained considerable attention is the
+                integration of carbon capture and storage (CCS) technologies. In this approach, the carbon dioxide
+                produced during the SMR process is captured and stored underground or in other secure locations,
+                preventing it from being released into the atmosphere. This process is referred to as the production of
+                blue hydrogen, as it combines the benefits of hydrogen production with the efforts to reduce CO₂
+                emissions. Carbon capture technologies have been deployed in various industrial processes for several
+                years, but their integration with SMR is relatively new and still evolving.
+                The use of CCS with SMR has the potential to significantly reduce the carbon emissions associated with
+                hydrogen production. By capturing up to 90% of the CO₂ emissions produced during the process, CCS can
+                help minimize the environmental impact of hydrogen production, making it more sustainable and compatible
+                with global decarbonization goals. However, the implementation of CCS technology is not without
+                challenges. The infrastructure required for capturing, transporting, and storing large quantities of CO₂
+                is expensive and requires careful planning and regulation. Furthermore, the long-term safety of storing
+                CO₂ underground is still a topic of ongoing research and debate. Despite these challenges, CCS remains
+                one of the most promising options for reducing the environmental footprint of SMR and enabling the
+                production of low-carbon hydrogen.
+                Another significant challenge associated with SMR is the reliance on fossil fuels, which are subject to
+                price fluctuations and resource depletion. As the world transitions to cleaner energy sources, the
+                availability and cost of natural gas may become more uncertain. Additionally, the global push to reduce
+                fossil fuel consumption and promote renewable energy could result in policies that limit the use of
+                natural gas in industrial processes like SMR. As such, SMR-based hydrogen production may face economic
+                pressures in the long term as the market for low-carbon hydrogen grows.
+                Despite these challenges, SMR remains a cornerstone of the hydrogen industry, particularly in sectors
+                that require large-scale hydrogen production. The technology is well-suited to meet the immediate needs
+                of industries like ammonia synthesis, where hydrogen is a key feedstock for fertilizer production, and
+                oil refining, where hydrogen is used for desulfurization and cracking processes. In addition, SMR is
+                widely used in the production of methanol, a chemical feedstock used in the production of plastics,
+                pharmaceuticals, and other products. These industries are likely to continue relying on SMR in the near
+                future due to the process's scalability and cost-effectiveness.
+                As the global energy landscape continues to evolve, there is increasing pressure to find more
+                sustainable methods for hydrogen production. One promising avenue is the development of renewable
+                hydrogen production methods, such as electrolysis powered by solar or wind energy. This process, known
+                as green hydrogen production, does not rely on fossil fuels and has the potential to produce hydrogen
+                with a zero-carbon footprint. However, electrolysis is currently more expensive than SMR due to the cost
+                of renewable energy infrastructure and electrolyzer technology. As technology advances and the costs of
+                renewable energy sources continue to decline, green hydrogen production may become more economically
+                competitive with SMR.
+                In the long term, the combination of SMR with CCS, along with advances in renewable hydrogen production
+                methods, may play a crucial role in the transition to a low-carbon hydrogen economy. While SMR remains a
+                dominant method for hydrogen production, its environmental challenges cannot be ignored. By improving
+                the efficiency of CCS technologies and scaling up renewable hydrogen production, the hydrogen industry
+                can reduce its reliance on fossil fuels and minimize its impact on climate change.
+                Furthermore, the development of hybrid systems that combine SMR with renewable energy sources could
+                provide a pathway to more sustainable hydrogen production. For example, hydrogen production facilities
+                could use renewable energy to power the electrolysis of water, while SMR-based plants could integrate
+                renewable energy to reduce the need for natural gas and lower their carbon emissions. These hybrid
+                systems could provide a flexible and scalable solution for meeting the growing demand for hydrogen while
+                also addressing the need for decarbonization.
+                In conclusion, while Steam Methane Reforming (SMR) remains a dominant method for hydrogen production,
+                its reliance on fossil fuels and the associated CO₂ emissions pose significant environmental challenges.
+                The integration of carbon capture and storage (CCS) technologies with SMR has the potential to reduce
+                the environmental impact of hydrogen production, making it more sustainable and compatible with global
+                climate goals. However, advances in renewable hydrogen production methods, such as electrolysis, will
+                ultimately play a crucial role in achieving a low-carbon hydrogen economy. As the hydrogen industry
+                continues to evolve, it will be essential to balance the cost-effectiveness and scalability of SMR with
+                the need for environmental sustainability, ultimately driving the transition to a cleaner, more
+                sustainable energy future.
+
+
+              </span>
+              <button onclick="myFunction()" id="myBtn" style="color: blue">
+                Read more..
+              </button>
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <script></script>
-    <!-- <script src="../../script.js"></script> -->
-  </body>
+  </div>
+  <script></script>
+  <!-- <script src="../../script.js"></script> -->
+  <script src="../../content.js"></script>
+</body>
+
 </html>
