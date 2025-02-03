@@ -12,4 +12,5 @@ function myFunction() {
     btnText.innerHTML = "Read less";
     moreText.style.display = "inline";
   }
+  console.log("myFunction Calling");
 }
