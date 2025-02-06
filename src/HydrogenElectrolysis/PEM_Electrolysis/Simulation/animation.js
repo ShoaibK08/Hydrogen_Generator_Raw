@@ -27,7 +27,7 @@ function initializeBalls() {
   const h2Width = "!w-[10%] sm:!w-[14%]";
   const h2Selector = ".RED_H2_BALLS_ANIMATIONS";
   const h24ClassName = "ORANGE_H2_BALL";
-  const h24Src = "../../../assets/OH.png";
+  const h24Src = "../../../assets/h24.png";
   const h24Width = "!w-[90%]";
   const h24Selector = ".ORANGE_H2_BALL_SANIMATIONS";
   function createBall(type, hide = false) {
