@@ -17,22 +17,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* .sun-ball {
-  animation: moveSunBall var(--duration) linear;
-}
-@keyframes moveSunBall {
-  0% {
-    left: 0;
-    opacity: 1;
-  }
-  90% {
-    opacity: 0.9;
-  }
-  100% {
-    left: 100%;
-    opacity: 0;
-  }
-} */
+
 
 
 .moveOrangeH2Balls {
@@ -311,71 +296,7 @@ body::-webkit-scrollbar {
   }
 }
 
-/* .xcard {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: #ffffff00;
-  overflow: hidden;
-} */
-/* .wave {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  opacity: 0.6;
-  left: -50%;
-  top: 35px;
-  background-color: #c1dff8;
-  border-radius: 40%;
-  animation: wave 8s infinite linear;
-} */
-/* .wave:nth-child(2) {
-  top: 40px;
-  animation: wave 10s infinite linear;
-}
-.wave:nth-child(3) {
-  top: 45px;
-  animation: wave 12s infinite linear;
-} */
 
-/* .ycard {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: #ffffff00;
-  overflow: hidden;
-} */
-/* .ywave {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  opacity: 0.6;
-  left: -100%;
-  top: 0;
-  background-color: #c1dff8;
-  border-radius: 40%;
-  animation: wave 8s infinite linear;
-}
-.ywave:nth-child(2) {
-  top: 40px;
-  animation: wave 10s infinite linear;
-}
-.ywave:nth-child(3) {
-  top: 45px;
-  animation: wave 12s infinite linear;
-}
-
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-} */
 
 .membrane {
   height: 10px;
