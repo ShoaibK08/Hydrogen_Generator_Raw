@@ -1,3 +1,149 @@
+// current one 
+// function initializeBalls() {
+//   const storedVoltValue = localStorage.getItem("currentVoltValue");
+//   let duration = 10;
+//   if (storedVoltValue === "0" || !storedVoltValue) {
+//     document.documentElement.style.setProperty("--duration", "10s");
+//   } else {
+//     const voltValue = parseInt(storedVoltValue);
+//     if (voltValue >= 1 && voltValue <= 25) {
+//       duration = 10 - (voltValue - 1) * (7 / 24);
+//       document.documentElement.style.setProperty("--duration", `${duration}s`);
+//     }
+//   }
+//   const h2oClassName = "BLUE_H2O_BALL moveBlueH2OBalls";
+//   const h2oSrc = "../../../assets/KOH+H20_New.zip.png";
+//   const h2oWidth = "!w-[10%] sm:!w-[18%]";
+//   const h2oSelector = ".BLUE_H2O_BALLS_ANIMATIONS";
+//   const ooClassName = "BLUE_OO_BALL moveBlueOOBalls";
+//   const ooSrc = "../../../assets/OO.png";
+//   const ooWidth = "!w-[10%] sm:!w-[14%]";
+//   const ooSelector = ".BLUE_OO_BALLS_ANIMATIONS";
+//   const eplusClassName = "GREEN_E_PLUS_BALL moveGreenEPlusBalls";
+//   const eplusSrc = "../../../assets/E+.png";
+//   const eplusWidth = "!w-[10%] sm:!w-[13%]";
+//   const eplusSelector = ".GREEN_E_PLUS_BALLS_ANIMATIONS";
+//   const h2ClassName = "RED_H2_BALL moveRedH2Balls";
+//   const h2Src = "../../../assets/HH.png";
+//   const h2Width = "!w-[10%] sm:!w-[14%]";
+//   const h2Selector = ".RED_H2_BALLS_ANIMATIONS";
+//   const h24ClassName = "ORANGE_H2_BALL";
+//   const h24Src = "../../../assets/OH.png";
+//   const h24Width = "!w-[90%]";
+//   const h24Selector = ".ORANGE_H2_BALL_SANIMATIONS";
+//   function createBall(type, hide = false) {
+//     let className, src, width, selector;
+//     switch (type) {
+//       case "h2o":
+//         className = h2oClassName;
+//         src = h2oSrc;
+//         width = h2oWidth;
+//         selector = h2oSelector;
+//         break;
+//       case "oo":
+//         className = ooClassName;
+//         src = ooSrc;
+//         width = ooWidth;
+//         selector = ooSelector;
+//         break;
+//       case "eplus":
+//         className = eplusClassName;
+//         src = eplusSrc;
+//         width = eplusWidth;
+//         selector = eplusSelector;
+//         break;
+//       case "h2":
+//         className = h2ClassName;
+//         src = h2Src;
+//         width = h2Width;
+//         selector = h2Selector;
+//         break;
+//       case "h24":
+//         className = h24ClassName;
+//         src = h24Src;
+//         width = h24Width;
+//         selector = h24Selector;
+//         break;
+//       default:
+//         console.error(`Unknown type: ${type}`);
+//         return;
+//     }
+//     const container = document.querySelector(selector);
+//     if (!container) {
+//       console.error(`Container not found for selector: ${selector}`);
+//       return;
+//     }
+//     const existingBalls = container.querySelectorAll(`.${className}`);
+//     existingBalls.forEach((ball) => ball.remove());
+//     const ball = document.createElement("div");
+//     ball.className = className;
+//     ball.innerHTML = `<img src="${src}" alt="${type}" class="${width} h-auto" />`;
+//     if (hide) {
+//       ball.classList.add("hidden");
+//     }
+//     ball.addEventListener("animationend", () => {
+//       ball.remove();
+//     });
+//     container.appendChild(ball);
+//   }
+
+
+
+
+//   const durationMs = duration * 1000;
+//   createBall("h2o", false);
+//   setInterval(() => createBall("h2o", false), durationMs / 5);
+//   createBall("oo", true);
+//   createBall("eplus", true);
+//   createBall("h2", true);
+//   createBall("h24", true);
+
+//   function createOHMolecules() {
+//     // Remove existing OH molecules before creating new ones
+//     const container = document.querySelector(".ORANGE_H2_BALL_SANIMATIONS");
+//     const existingBalls = container.querySelectorAll(".ORANGE_H2_BALL");
+//     existingBalls.forEach(ball => ball.remove());
+  
+//     // Create 4 OH molecules with fixed spacing
+//     const spacing = 200; // Milliseconds between each molecule
+    
+//     for (let i = 0; i < 2; i++) {
+//       setTimeout(() => createBall("h24", false), spacing * i);
+//     }
+//   }
+//   const intervals = {
+//     oo: durationMs / 2.5,
+//     eplus: durationMs / 12,
+//     h2: durationMs / 5,
+//     h24: durationMs / 1.1, // Slightly longer interval for OH molecules
+//   };
+
+
+
+//   setTimeout(() => {
+//     createBall("oo", false);
+//     createBall("eplus", false);
+//     createBall("h2", false);
+    
+//     // Initial creation of OH molecules
+//     createOHMolecules();
+    
+//     // Set intervals for all balls
+//     Object.entries(intervals).forEach(([type, interval]) => {
+//       if (type === 'h24') {
+//         // Create OH molecules every interval
+//         setInterval(createOHMolecules, Math.round(interval));
+//       } else {
+//         setInterval(() => createBall(type, false), Math.round(interval));
+//       }
+//     });
+//   }, duration * 1000);
+
+
+
+
+// }
+
 function initializeBalls() {
   const storedVoltValue = localStorage.getItem("currentVoltValue");
   let duration = 10;
@@ -10,81 +156,31 @@ function initializeBalls() {
       document.documentElement.style.setProperty("--duration", `${duration}s`);
     }
   }
+  
   const h2oClassName = "BLUE_H2O_BALL moveBlueH2OBalls";
   const h2oSrc = "../../../assets/KOH+H20_New.zip.png";
   const h2oWidth = "!w-[10%] sm:!w-[18%]";
   const h2oSelector = ".BLUE_H2O_BALLS_ANIMATIONS";
+  
   const ooClassName = "BLUE_OO_BALL moveBlueOOBalls";
   const ooSrc = "../../../assets/OO.png";
   const ooWidth = "!w-[10%] sm:!w-[14%]";
   const ooSelector = ".BLUE_OO_BALLS_ANIMATIONS";
+  
   const eplusClassName = "GREEN_E_PLUS_BALL moveGreenEPlusBalls";
   const eplusSrc = "../../../assets/E+.png";
   const eplusWidth = "!w-[10%] sm:!w-[13%]";
   const eplusSelector = ".GREEN_E_PLUS_BALLS_ANIMATIONS";
+  
   const h2ClassName = "RED_H2_BALL moveRedH2Balls";
   const h2Src = "../../../assets/HH.png";
   const h2Width = "!w-[10%] sm:!w-[14%]";
   const h2Selector = ".RED_H2_BALLS_ANIMATIONS";
+  
   const h24ClassName = "ORANGE_H2_BALL";
   const h24Src = "../../../assets/OH.png";
   const h24Width = "!w-[90%]";
   const h24Selector = ".ORANGE_H2_BALL_SANIMATIONS";
-  // function createBall(type, hide = false) {
-  //   let className, src, width, selector;
-  //   switch (type) {
-      // case "h2o":
-      //   className = h2oClassName;
-      //   src = h2oSrc;
-      //   width = h2oWidth;
-      //   selector = h2oSelector;
-      //   break;
-      // case "oo":
-      //   className = ooClassName;
-      //   src = ooSrc;
-      //   width = ooWidth;
-      //   selector = ooSelector;
-      //   break;
-      // case "eplus":
-      //   className = eplusClassName;
-      //   src = eplusSrc;
-      //   width = eplusWidth;
-      //   selector = eplusSelector;
-      //   break;
-      // case "h2":
-      //   className = h2ClassName;
-      //   src = h2Src;
-      //   width = h2Width;
-      //   selector = h2Selector;
-      //   break;
-  //     case "h24":
-  //       className = h24ClassName;
-  //       src = h24Src;
-  //       width = h24Width;
-  //       selector = h24Selector;
-  //       break;
-  //     default:
-  //       console.error(`Unknown type: ${type}`);
-  //       return;
-  //   }
-  //   const container = document.querySelector(selector);
-  //   if (!container) {
-  //     console.error(`Container not found for selector: ${selector}`);
-  //     return;
-  //   }
-  //   const existingBalls = container.querySelectorAll(`.${className}`);
-  //   existingBalls.forEach((ball) => ball.remove());
-  //   const ball = document.createElement("div");
-  //   ball.className = className;
-  //   ball.innerHTML = `<img src="${src}" alt="${type}" class="${width} h-auto" />`;
-  //   if (hide) {
-  //     ball.classList.add("hidden");
-  //   }
-  //   ball.addEventListener("animationend", () => {
-  //     ball.remove();
-  //   });
-  //   container.appendChild(ball);
-  // }
 
   function createBall(type, hide = false) {
     let className, src, width, selector;
@@ -112,7 +208,7 @@ function initializeBalls() {
         src = h2Src;
         width = h2Width;
         selector = h2Selector;
-        break; 
+        break;
       case "h24":
         className = h24ClassName;
         src = h24Src;
@@ -123,15 +219,16 @@ function initializeBalls() {
         console.error(`Unknown type: ${type}`);
         return;
     }
+    
     const container = document.querySelector(selector);
     if (!container) {
       console.error(`Container not found for selector: ${selector}`);
       return;
     }
-    if (type !== "h24") {
-      const existingBalls = container.querySelectorAll(`.${className}`);
-      existingBalls.forEach((ball) => ball.remove());
-    }
+    
+    const existingBalls = container.querySelectorAll(`.${className}`);
+    existingBalls.forEach((ball) => ball.remove());
+    
     const ball = document.createElement("div");
     ball.className = className;
     ball.innerHTML = `<img src="${src}" alt="${type}" class="${width} h-auto" />`;
@@ -144,7 +241,6 @@ function initializeBalls() {
     container.appendChild(ball);
   }
 
-
   const durationMs = duration * 1000;
   createBall("h2o", false);
   setInterval(() => createBall("h2o", false), durationMs / 5);
@@ -154,50 +250,67 @@ function initializeBalls() {
   createBall("h24", true);
 
   function createOHMolecules() {
-    // Remove existing OH molecules before creating new ones
     const container = document.querySelector(".ORANGE_H2_BALL_SANIMATIONS");
     const existingBalls = container.querySelectorAll(".ORANGE_H2_BALL");
     existingBalls.forEach(ball => ball.remove());
-  
-    // Create 4 OH molecules with fixed spacing
-    const spacing = 200; // Milliseconds between each molecule
     
+    const spacing = 200;
     for (let i = 0; i < 2; i++) {
       setTimeout(() => createBall("h24", false), spacing * i);
     }
   }
+
   const intervals = {
-    oo: durationMs / 2.5,
     eplus: durationMs / 12,
     h2: durationMs / 5,
-    h24: durationMs / 1.1, // Slightly longer interval for OH molecules
+    h24: durationMs / 1.1,
   };
 
+  // Modified OO ball creation with sequential delays
+  let canCreateOO = true;
 
+  function createOOWithSequentialDelays() {
+    if (canCreateOO) {
+      canCreateOO = false;
+      
+      // First molecule with 3-second delay
+      setTimeout(() => {
+        createBall("oo", false);
+        
+        // Second molecule after additional 4-second delay (total 7 seconds)
+        setTimeout(() => {
+          createBall("oo", false);
+          
+          // Reset flag to allow next sequence
+          setTimeout(() => {
+            canCreateOO = true;
+          }, 1000); // Small buffer before allowing next sequence
+        }, 4000);
+      }, 3000);
+    }
+  }
 
   setTimeout(() => {
     createBall("oo", false);
     createBall("eplus", false);
     createBall("h2", false);
-    
-    // Initial creation of OH molecules
     createOHMolecules();
     
     // Set intervals for all balls
     Object.entries(intervals).forEach(([type, interval]) => {
       if (type === 'h24') {
-        // Create OH molecules every interval
         setInterval(createOHMolecules, Math.round(interval));
       } else {
         setInterval(() => createBall(type, false), Math.round(interval));
       }
     });
+
+    // Separate interval for OO balls with sequential delays
+    setInterval(createOOWithSequentialDelays, durationMs / 2.5);
   }, duration * 1000);
-
-
-
-
 }
+
+
 const resetBtn = document.querySelector(".resetBtn");
 if (resetBtn) {
   const animationClasses = [".ORANGE_H2_BALL_SANIMATIONS", ".BLUE_H2O_BALLS_ANIMATIONS", ".BLUE_OO_BALLS_ANIMATIONS", ".GREEN_E_PLUS_BALLS_ANIMATIONS", ".RED_H2_BALLS_ANIMATIONS"];

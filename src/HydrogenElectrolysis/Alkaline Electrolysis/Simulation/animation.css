@@ -80,7 +80,7 @@ body::-webkit-scrollbar {
 }
 
 .moveBlueOOBalls {
-  animation: moveBlueOOBall var(--duration) linear 3s forwards;
+ animation: moveBlueOOBall var(--duration) linear 3s forwards;
   position: absolute;
   z-index: 1000;
   width: 45%;
