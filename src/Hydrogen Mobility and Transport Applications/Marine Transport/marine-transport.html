@@ -2,42 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Marine Transport</title>
-    <script src="../../assets/tailwind.min.css"></script>
-    <link rel="stylesheet" href="../../assets/main.css" />
-    <script defer src="../../assets/main.js"></script>
-    <script defer src="../../assets/alpinejs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <link rel="stylesheet" href="../../assets/all-page-animation.css" />
-    <script src="../../content.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Marine Transport</title>
+  <script src="../../assets/tailwind.min.css"></script>
+  <link rel="stylesheet" href="../../assets/main.css" />
+  <script defer src="../../assets/main.js"></script>
+  <script defer src="../../assets/alpinejs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <link rel="stylesheet" href="../../assets/all-page-animation.css" />
+  <script src="../../content.js"></script>
 </head>
 
 <body>
-    <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
-        x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
-        <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
-            style="position: sticky; top: 0; z-index: 1200">
-            <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
-                <a href="../../home.html">
-                    <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
-                </a>
-                <div class="flex items-center gap-2 sm:gap-4">
-                    <button @click="isOpen = !isOpen"
-                        class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
-                        <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
-                    </button>
-                    <a href="../../home.html"
-                        class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
-                        <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
-                    </a>
-                </div>
-            </div>
-            <div id="headerAccordion" x-show="isOpen" @click.outside="isOpen = false"
-                class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32">
-                <div class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
-                    x-data="{ 
+  <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
+    x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
+    <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
+      style="position: sticky; top: 0; z-index: 1200">
+      <div class="w-[95%] max-w-[90%] mx-auto flex justify-between items-center h-full">
+        <a href="../../home.html">
+          <img src="../../assets/logo2.png" alt="logo" class="h-[50px]" />
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <button @click="isOpen = !isOpen"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon1.png" alt="" class="w-4 sm:w-5" />
+          </button>
+          <a href="../../home.html"
+            class="size-8 sm:size-10 border-[0.67px] border-[#05252433] rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-neutral-100">
+            <img src="../../assets/icon2.png" alt="" class="w-4 sm:w-5" />
+          </a>
+        </div>
+      </div>
+      <div id="headerAccordion" x-show="isOpen" @click.outside="isOpen = false"
+        class="absolute bg-white z-[100] top-20 left-0 w-full pt-5 pb-32">
+        <div
+          class="w-[95%] max-w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 lg:gap-y-5"
+          x-data="{ 
           activeAccordion: null,
           items: [
             {
@@ -164,166 +165,163 @@
             })
           }
         }" @click.outside="activeAccordion = null">
-                    <template x-for="(item, index) in items" :key="index">
-                        <div class="relative font-inter antialiased text-sm lg:text-base">
-                            <div
-                                :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'">
-                                <h2 class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group">
-                                    <button :id="'faqs-title-' + index" type="button"
-                                        class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
-                                        :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
-                                        @click="activeAccordion = activeAccordion === index ? null : index"
-                                        :aria-expanded="activeAccordion === index"
-                                        :aria-controls="'faqs-text-' + index">
-                                        <p class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2"
-                                            x-text="item.title"></p>
-                                        <div class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
-                                            :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'">
-                                            <img src="../../assets/icon3.png" alt="" class="transition-all duration-700"
-                                                :class="activeAccordion === index ? 'rotate-180' : ''" />
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div :id="'faqs-text-' + index" role="region" :aria-labelledby="'faqs-title-' + index"
-                                    class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
-                                    :class="activeAccordion === index ? 'block' : 'hidden'">
-                                    <div class="overflow-hidden flex flex-col gap-3.5">
-                                        <template x-for="line in item.content" :key="line.text">
-                                            <a :href="line.url"
-                                                class="hover:text-blue-600 transition-colors duration-300"
-                                                x-text="line.text"></a>
-                                        </template>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </header>
-
-        <div class="bg-[#f5f5f5] min-h-screen">
-            <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
-                <div class="flex items-center gap-3.5">
-                    <a href="../../home.html"
-                        class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]">
-                        <img src="../../assets/icon5.png" alt="" class="" />
-                    </a>
-                    <h3 class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium">
-                        Marine Transport
-                    </h3>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
-                    <img src="../../assets/Education and Awareness.jpg" alt="" class="mx-auto shadow-lg rounded-2xl" />
-                    <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center">
-                        <h3 class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold">
-                            Overview
-                        </h3>
-                        <p class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal scroll">
-                            Hydrogen is gaining recognition as a transformative energy source in the quest for a
-                            cleaner, more sustainable future, and its potential in marine transportation is particularly
-                            significant. The shipping industry, long dependent on fossil fuels, has been a major
-                            contributor to greenhouse gas emissions and air pollution. As environmental concerns grow
-                            and regulations tighten, hydrogen is emerging as a viable alternative, capable of
-                            revolutionizing how vessels are powered. Its ability to produce energy while emitting only
-                            water and heat positions it as a leading candidate for decarbonizing marine transportation.
-                            One of the key applications of hydrogen in this sector lies in its use in fuel cell-powered
-                            propulsion systems. Traditional marine engines, which rely on heavy fuel oil and marine gas
-                            oil, are known for their significant emissions of carbon dioxide, sulfur oxides, and
-                            nitrogen oxides. Hydrogen-powered<span id="dots">...</span>
-                            <span id="more" style="display: none"> fuel cells offer a clean and efficient alternative,
-                            converting chemical energy into electricity with zero harmful emissions. Technologies such
-                            as proton exchange membrane fuel cells (PEMFCs) and solid oxide fuel cells (SOFCs) are being
-                            actively developed to power a variety of vessels, from passenger ferries to small cargo
-                            ships.
-                            Hydrogen’s versatility extends beyond propulsion systems, as it can also be used in
-                            auxiliary power systems. These systems provide electricity for essential onboard functions,
-                            such as lighting, refrigeration, and communication. Even on larger vessels, hydrogen can
-                            complement other energy sources, reducing the reliance on fossil fuels and improving overall
-                            energy efficiency. This makes hydrogen a practical solution not only for propulsion but also
-                            for supporting a range of operational needs in the shipping industry.
-                            In addition to using hydrogen in its pure form, ammonia is being explored as a hydrogen-rich
-                            alternative fuel for marine applications. Ammonia has a higher energy density and is easier
-                            to store and transport compared to compressed or liquefied hydrogen, making it particularly
-                            suitable for larger vessels and long-haul operations. By utilizing ammonia, ships can either
-                            extract hydrogen onboard or use it directly in modified engines, broadening the scope of
-                            hydrogen-based solutions for decarbonizing marine transportation.
-                            The adoption of hydrogen as a marine fuel offers numerous environmental benefits. The
-                            shipping industry is responsible for nearly 3% of global carbon dioxide emissions, and
-                            hydrogen provides a pathway to significantly reduce this footprint. The International
-                            Maritime Organization (IMO) has set an ambitious target to cut greenhouse gas emissions by
-                            50% by 2050, and hydrogen is considered a crucial component in achieving this goal. Beyond
-                            reducing greenhouse gases, hydrogen-powered vessels also eliminate air pollutants like
-                            sulfur oxides and nitrogen oxides, which are particularly problematic in coastal areas and
-                            ports.
-                            Improved air quality is one of the immediate benefits of hydrogen adoption in marine
-                            transportation. Ports and coastal communities often suffer from the environmental impact of
-                            shipping emissions, which contribute to respiratory problems and other health issues. By
-                            replacing conventional fuels with hydrogen, the shipping industry can help alleviate these
-                            problems, creating cleaner environments for people living and working near busy ports.
-                            Despite its potential, the widespread implementation of hydrogen in marine transportation
-                            faces several challenges. One of the primary obstacles is the storage and transportation of
-                            hydrogen, which has a low energy density compared to traditional fuels. Storing hydrogen
-                            requires advanced technologies, such as high-pressure tanks or cryogenic systems to maintain
-                            it in liquid form. These requirements add complexity and cost to the process, highlighting
-                            the need for continued innovation in storage solutions.
-                            Another challenge is the lack of refueling infrastructure at ports. Most ports are not yet
-                            equipped to support hydrogen-powered vessels, which limits their operational range and
-                            feasibility. Building a network of hydrogen refueling stations at key maritime hubs is
-                            essential for enabling large-scale adoption. This requires significant investment and
-                            collaboration between governments, port authorities, and private companies.
-                            The cost of producing green hydrogen, which is generated using renewable energy sources like
-                            wind, solar, or hydropower, is another barrier to its adoption. While green hydrogen is
-                            crucial for ensuring sustainability, its production remains more expensive than conventional
-                            fuels. However, as renewable energy becomes more widespread and hydrogen production scales
-                            up, the cost is expected to decrease. Government incentives and subsidies are also helping
-                            to accelerate this transition.
-                            Several pioneering projects are demonstrating the feasibility and benefits of hydrogen in
-                            the maritime sector. In Norway, the MF Hydra, the world’s first liquid hydrogen-powered
-                            ferry, has shown that hydrogen can be successfully integrated into passenger transport. This
-                            vessel operates with zero emissions, setting an example for how renewable energy and
-                            hydrogen can transform maritime operations. Other regions are also taking steps to
-                            incorporate hydrogen into their marine industries.
-                            Ports in Europe, such as Rotterdam and Hamburg, are investing heavily in hydrogen
-                            infrastructure to position themselves as global hydrogen hubs. These ports are working to
-                            integrate hydrogen production facilities with renewable energy sources and create the
-                            storage and refueling infrastructure needed to support a growing fleet of hydrogen-powered
-                            ships. These efforts demonstrate the commitment of industry leaders and governments to adopt
-                            hydrogen as a sustainable energy solution.
-                            Hydrogen is also being explored for use in large-scale cargo ships that operate on
-                            international routes. Hybrid systems combining hydrogen fuel cells with batteries or
-                            auxiliary engines are being developed to meet the energy demands of these larger vessels. As
-                            the technology matures, hydrogen is expected to play a vital role in decarbonizing even the
-                            most energy-intensive segments of the shipping industry.
-                            In addition to its environmental benefits, hydrogen offers the potential to improve the
-                            economic sustainability of the maritime sector. By diversifying energy sources and reducing
-                            dependence on fossil fuels, hydrogen can help stabilize energy costs in the long term.
-                            Furthermore, the development of hydrogen technology and infrastructure creates new
-                            opportunities for innovation and job creation in the shipping industry.
-                            The success of hydrogen in marine transportation will depend on coordinated global efforts
-                            to address the challenges of cost, infrastructure, and technological readiness. Governments,
-                            industry leaders, and researchers must work together to develop practical solutions and
-                            implement policies that support the transition to hydrogen. International collaboration is
-                            also essential to ensure the development of standardized regulations and practices for
-                            hydrogen use in shipping.
-                            As advancements continue, hydrogen is steadily becoming a cornerstone of the maritime
-                            industry’s transition to sustainability. Its ability to reduce emissions, improve air
-                            quality, and support global climate goals makes it a transformative energy source for marine
-                            transportation. By investing in hydrogen technologies and infrastructure, the maritime
-                            sector can pave the way for a cleaner, greener future on the world’s oceans.
-
-                            </span>
-                            <button onclick="myFunction()" id="myBtn" style="color: blue">
-                                Read more..
-                            </button>
-                        </p>
+          <template x-for="(item, index) in items" :key="index">
+            <div class="relative font-inter antialiased text-sm lg:text-base">
+              <div :class="activeAccordion === index ? 'bg-[#f5f5f5] rounded-t-[10px]' : 'bg-white rounded-[10px]'">
+                <h2 class="px-[15px] hover:bg-[#f5f5f5] hover:rounded-[10px] group">
+                  <button :id="'faqs-title-' + index" type="button"
+                    class="flex items-center justify-between w-full text-left font-semibold py-[15px] gap-4 border-b-[1px] border-[#DADADA00]"
+                    :class="activeAccordion === index ? 'border-[#DADADA]' : ''"
+                    @click="activeAccordion = activeAccordion === index ? null : index"
+                    :aria-expanded="activeAccordion === index" :aria-controls="'faqs-text-' + index">
+                    <p class="line-height-[20px] font-medium flex-1 pr-2 line-clamp-2" x-text="item.title"></p>
+                    <div
+                      class="size-[30px] group-hover:bg-white shrink-0 rounded-full flex justify-center items-center cursor-pointer"
+                      :class="activeAccordion === index ? 'bg-white' : 'bg-[#f5f5f5]'">
+                      <img src="../../assets/icon3.png" alt="" class="transition-all duration-700"
+                        :class="activeAccordion === index ? 'rotate-180' : ''" />
                     </div>
+                  </button>
+                </h2>
+                <div :id="'faqs-text-' + index" role="region" :aria-labelledby="'faqs-title-' + index"
+                  class="p-[15px] w-full absolute z-[1] bg-[#f5f5f5] rounded-b-[10px] text-slate-600 overflow-hidden transition-all duration-300 ease-in-out"
+                  :class="activeAccordion === index ? 'block' : 'hidden'">
+                  <div class="overflow-hidden flex flex-col gap-3.5">
+                    <template x-for="line in item.content" :key="line.text">
+                      <a :href="line.url" class="hover:text-blue-600 transition-colors duration-300"
+                        x-text="line.text"></a>
+                    </template>
+                  </div>
                 </div>
+              </div>
             </div>
+          </template>
         </div>
+      </div>
+    </header>
+
+    <div class="bg-[#f5f5f5] min-h-screen">
+      <div class="w-[95%] max-w-[90%] space-y-[30px] mx-auto py-[30px]">
+        <div class="flex items-center gap-3.5">
+          <a href="../../home.html"
+            class="bg-white rounded-full size-[30px] flex items-center justify-center border-[0.5px] border-[#05252433]">
+            <img src="../../assets/icon5.png" alt="" class="" />
+          </a>
+          <h3 class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium">
+            Marine Transport
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
+          <img src="../../assets/Education and Awareness.jpg" alt="" class="mx-auto shadow-lg rounded-2xl" />
+          <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center">
+            <h3 class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold">
+              Overview
+            </h3>
+            <p class="text-sm lg:text-base xl:text-lg line-height-[26px] font-normal scroll">
+              Hydrogen is gaining recognition as a transformative energy source in the quest for a
+              cleaner, more sustainable future, and its potential in marine transportation is particularly
+              significant. The shipping industry, long dependent on fossil fuels, has been a major
+              contributor to greenhouse gas emissions and air pollution. As environmental concerns grow
+              and regulations tighten, hydrogen is emerging as a viable alternative, capable of
+              revolutionizing how vessels are powered. Its ability to produce energy while emitting only
+              water and heat positions it as a leading candidate for decarbonizing marine transportation.
+              One of the key applications of hydrogen in this sector lies in its use in fuel cell-powered
+              propulsion systems. Traditional marine engines, which rely on heavy fuel oil and marine gas
+              oil, are known for their significant emissions of carbon dioxide, sulfur oxides, and
+              nitrogen oxides. Hydrogen-powered<span id="dots"></span>
+              <span id="more" style="display: none"> fuel cells offer a clean and efficient alternative,
+                converting chemical energy into electricity with zero harmful emissions. Technologies such
+                as proton exchange membrane fuel cells (PEMFCs) and solid oxide fuel cells (SOFCs) are being
+                actively developed to power a variety of vessels, from passenger ferries to small cargo
+                ships.
+                Hydrogen’s versatility extends beyond propulsion systems, as it can also be used in
+                auxiliary power systems. These systems provide electricity for essential onboard functions,
+                such as lighting, refrigeration, and communication. Even on larger vessels, hydrogen can
+                complement other energy sources, reducing the reliance on fossil fuels and improving overall
+                energy efficiency. This makes hydrogen a practical solution not only for propulsion but also
+                for supporting a range of operational needs in the shipping industry.
+                In addition to using hydrogen in its pure form, ammonia is being explored as a hydrogen-rich
+                alternative fuel for marine applications. Ammonia has a higher energy density and is easier
+                to store and transport compared to compressed or liquefied hydrogen, making it particularly
+                suitable for larger vessels and long-haul operations. By utilizing ammonia, ships can either
+                extract hydrogen onboard or use it directly in modified engines, broadening the scope of
+                hydrogen-based solutions for decarbonizing marine transportation.
+                The adoption of hydrogen as a marine fuel offers numerous environmental benefits. The
+                shipping industry is responsible for nearly 3% of global carbon dioxide emissions, and
+                hydrogen provides a pathway to significantly reduce this footprint. The International
+                Maritime Organization (IMO) has set an ambitious target to cut greenhouse gas emissions by
+                50% by 2050, and hydrogen is considered a crucial component in achieving this goal. Beyond
+                reducing greenhouse gases, hydrogen-powered vessels also eliminate air pollutants like
+                sulfur oxides and nitrogen oxides, which are particularly problematic in coastal areas and
+                ports.
+                Improved air quality is one of the immediate benefits of hydrogen adoption in marine
+                transportation. Ports and coastal communities often suffer from the environmental impact of
+                shipping emissions, which contribute to respiratory problems and other health issues. By
+                replacing conventional fuels with hydrogen, the shipping industry can help alleviate these
+                problems, creating cleaner environments for people living and working near busy ports.
+                Despite its potential, the widespread implementation of hydrogen in marine transportation
+                faces several challenges. One of the primary obstacles is the storage and transportation of
+                hydrogen, which has a low energy density compared to traditional fuels. Storing hydrogen
+                requires advanced technologies, such as high-pressure tanks or cryogenic systems to maintain
+                it in liquid form. These requirements add complexity and cost to the process, highlighting
+                the need for continued innovation in storage solutions.
+                Another challenge is the lack of refueling infrastructure at ports. Most ports are not yet
+                equipped to support hydrogen-powered vessels, which limits their operational range and
+                feasibility. Building a network of hydrogen refueling stations at key maritime hubs is
+                essential for enabling large-scale adoption. This requires significant investment and
+                collaboration between governments, port authorities, and private companies.
+                The cost of producing green hydrogen, which is generated using renewable energy sources like
+                wind, solar, or hydropower, is another barrier to its adoption. While green hydrogen is
+                crucial for ensuring sustainability, its production remains more expensive than conventional
+                fuels. However, as renewable energy becomes more widespread and hydrogen production scales
+                up, the cost is expected to decrease. Government incentives and subsidies are also helping
+                to accelerate this transition.
+                Several pioneering projects are demonstrating the feasibility and benefits of hydrogen in
+                the maritime sector. In Norway, the MF Hydra, the world’s first liquid hydrogen-powered
+                ferry, has shown that hydrogen can be successfully integrated into passenger transport. This
+                vessel operates with zero emissions, setting an example for how renewable energy and
+                hydrogen can transform maritime operations. Other regions are also taking steps to
+                incorporate hydrogen into their marine industries.
+                Ports in Europe, such as Rotterdam and Hamburg, are investing heavily in hydrogen
+                infrastructure to position themselves as global hydrogen hubs. These ports are working to
+                integrate hydrogen production facilities with renewable energy sources and create the
+                storage and refueling infrastructure needed to support a growing fleet of hydrogen-powered
+                ships. These efforts demonstrate the commitment of industry leaders and governments to adopt
+                hydrogen as a sustainable energy solution.
+                Hydrogen is also being explored for use in large-scale cargo ships that operate on
+                international routes. Hybrid systems combining hydrogen fuel cells with batteries or
+                auxiliary engines are being developed to meet the energy demands of these larger vessels. As
+                the technology matures, hydrogen is expected to play a vital role in decarbonizing even the
+                most energy-intensive segments of the shipping industry.
+                In addition to its environmental benefits, hydrogen offers the potential to improve the
+                economic sustainability of the maritime sector. By diversifying energy sources and reducing
+                dependence on fossil fuels, hydrogen can help stabilize energy costs in the long term.
+                Furthermore, the development of hydrogen technology and infrastructure creates new
+                opportunities for innovation and job creation in the shipping industry.
+                The success of hydrogen in marine transportation will depend on coordinated global efforts
+                to address the challenges of cost, infrastructure, and technological readiness. Governments,
+                industry leaders, and researchers must work together to develop practical solutions and
+                implement policies that support the transition to hydrogen. International collaboration is
+                also essential to ensure the development of standardized regulations and practices for
+                hydrogen use in shipping.
+                As advancements continue, hydrogen is steadily becoming a cornerstone of the maritime
+                industry’s transition to sustainability. Its ability to reduce emissions, improve air
+                quality, and support global climate goals makes it a transformative energy source for marine
+                transportation. By investing in hydrogen technologies and infrastructure, the maritime
+                sector can pave the way for a cleaner, greener future on the world’s oceans.
+
+              </span>
+              <button onclick="myFunction()" id="myBtn" style="color: blue">
+                Read more..
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <script></script>
-    <!-- <script src="../../script.js"></script> -->
+  </div>
+  <script></script>
+  <!-- <script src="../../script.js"></script> -->
 </body>
 
 </html>
