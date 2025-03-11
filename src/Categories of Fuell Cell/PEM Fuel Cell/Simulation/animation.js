@@ -1,365 +1,769 @@
-function initializeBalls() {
-  const storedVoltValue = localStorage.getItem("currentVoltValue");
-  let duration = 10;
-  if (storedVoltValue === "0" || !storedVoltValue) {
-    document.documentElement.style.setProperty("--duration", "10s");
-  } else {
-    const voltValue = parseInt(storedVoltValue);
-    if (voltValue >= 1 && voltValue <= 25) {
-      duration = 10 - (voltValue - 1) * (7 / 24);
-      document.documentElement.style.setProperty("--duration", `${duration}s`);
+
+function dfgdergerthgrthrytjunytuj (opacity = null) {
+  let rangeInput = document.getElementById("hrtherthrgdgertgyerhyrthrtge");
+
+  let opacityValue = opacity !== null ? opacity : rangeInput.value / 100;
+  let ufuhgdhfisdfjosjfudufgufoisjfojidhid = document.getElementById("dfhgdfhsgdfghsderhrt");
+  let ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg = document.getElementById("dfghfdgsasdegertghrteg");
+
+  localStorage.setItem("fdgdghetrgedsfgdsffg",rangeInput.value);
+
+  if (opacityValue == 0)
+  {
+    ufuhgdhfisdfjosjfudufgufoisjfojidhid.style.opacity = "0";
+    ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg.style.opacity = "0";
+  } else
+  {
+    ufuhgdhfisdfjosjfudufgufoisjfojidhid.style.opacity = opacityValue.toString();
+
+
+    let shadowOpacity = 0.005 + opacityValue * 0.495;
+    ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg.style.opacity = shadowOpacity.toFixed(3);
+  }
+}
+
+
+document.getElementById("hrtherthrgdgertgyerhyrthrtge").addEventListener("input",function () {
+  dfgdergerthgrthrytjunytuj();
+});
+
+
+let dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn = {
+  ball3: { element: null,progress: 0 },
+  ball4: { element: null,progress: 0 },
+  ball5: { element: null,progress: 0 },
+  ball6: { element: null,progress: 0 }
+};
+
+
+const ballTypes = {
+  ball1: { className: "h-[3%] w-[6%]",src: "../../../assets/blueball2.png",interval: 2 },
+  ball2: { className: "h-[3%] w-[3%]",src: "../../../assets/redball2.png",interval: 3 },
+  ball3: { className: "h-[5%] w-[5%]",src: "../../../assets/greenball1.png",interval: 2 },
+  ball4: { className: "h-[5%] w-[5%]",src: "../../../assets/greenball1.png",interval: 2 },
+  ball5: { className: "h-[5%] w-[5%]",src: "../../../assets/greenball1.png",interval: 2 },
+  ball6: { className: "h-[5%] w-[5%]",src: "../../../assets/greenball1.png",interval: 2 },
+  ball7: { className: "h-[5%] w-[5%]",src: "../../../assets/yellowball1.png",interval: 2 },
+  ball8: { className: "h-[5%] w-[5%]",src: "../../../assets/yellowball1.png",interval: 2 },
+  ball9: { className: "h-[5%] w-[5%]",src: "../../../assets/yellowball1.png",interval: 2 },
+  ball10: { className: "h-[5%] w-[5%]",src: "../../../assets/yellowball1.png",interval: 2 },
+  ball11: { className: "h-[3%] w-[6%]",src: "../../../assets/blueball2.png",interval: 2 },
+  ball12: { className: "h-[3%] w-[3%]",src: "../../../assets/redball1.png",interval: 2 },
+  ball13: { className: "h-[3%] w-[3%]",src: "../../../assets/redball1.png",interval: 2 },
+  ball14: { className: "h-[3%] w-[3%]",src: "../../../assets/2blue1red2.png",interval: 2 },
+  ball15: { className: "h-[3%] w-[3%]",src: "../../../assets/2blue1red2.png",interval: 2 },
+  ball16: { className: "h-[3%] w-[6%]",src: "../../../assets/blueball2.png",interval: 2 }
+};
+
+
+let state = {
+  isPlaying: true,
+  intervals: new Map(),
+  animationFrameId: null,
+  elements: {
+    gnerjlkgnhoierghoerhguorhfgjhsdjhfgs: document.getElementById("dfghdfssdfgasdfgsdghergrsaf"),
+    ohjudeghsjfgksdjfisdfhgfjdsghsdisifj: document.getElementById("sdfgsdergergherghergherg"),
+    rsrgjhklrhgjslkdhfgasdhfgljksdhfgksd: document.getElementById("rsfgresdgerfgwergfregergerg"),
+    djfgdfjlghisdfjhgisdfjhgoisdigsgfids: document.getElementById("hrtherthrgdgertgyerhyrthrtge"),
+    ufuhgdhfisdfjosjfudufgufoisjfojidhid: document.getElementById("dfhgdfhsgdfghsderhrt"),
+    ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg: document.getElementById("dfghfdgsasdegertghrteg"),
+    fghhergfsdfdhgtjtrjhytrjrytjtrhergtt: document.getElementById("fdgdergwergergwerfwefwefwe"),
+    regrthtrjuytjuytjhdfgsdfsefefrwefgre: document.getElementById("rfgergertghrthrytjhytjkytukjhr"),
+    rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth: document.getElementById("gertghrthrytjytjkhdfgsdfsd")
+  },
+  rtfhrtfhrgdsgdfsgehetrghreghsertgegegf: false
+};
+
+
+
+function yhrthrtghergwerferghrthrytjhytrj () {
+
+  const efrgerfgerjigjerij = document.querySelectorAll(".ball3");
+  const rtghertghertjhyrtj = document.querySelectorAll(".ball4");
+  const dfghtrthrtgfdsfsdf = document.querySelectorAll(".ball5");
+  const tyjytjrfhdfgsdfgrg = document.querySelectorAll(".ball6");
+
+
+  function estimateProgress (element) {
+    if (!element || !element.startTime) return 0;
+
+    const elapsed = Date.now() - element.startTime;
+    const duration = getDuration() * 1000;
+    return Math.min(elapsed / duration * 100,100);
+  }
+
+
+  if (efrgerfgerjigjerij.length > 0) dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball3.progress = estimateProgress(efrgerfgerjigjerij[ 0 ]);
+  if (rtghertghertjhyrtj.length > 0) dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball4.progress = estimateProgress(rtghertghertjhyrtj[ 0 ]);
+  if (dfghtrthrtgfdsfsdf.length > 0) dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball5.progress = estimateProgress(dfghtrthrtgfdsfsdf[ 0 ]);
+  if (tyjytjrfhdfgsdfgrg.length > 0) dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball6.progress = estimateProgress(tyjytjrfhdfgsdfgrg[ 0 ]);
+
+
+  const regrthtrjuytjuytjhdfgsdfsefefrwefgreValue = parseFloat(localStorage.getItem("edgoejgoijrogojfgjiihh") || "0");
+  const isReactionComplete = regrthtrjuytjuytjhdfgsdfsefefrwefgreValue >= 30;
+
+
+  const ergergergrgvf = dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball3.progress >= 25 && dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball3.progress <= 65;
+  const gthdertgerger = dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball4.progress >= 30 && dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball4.progress <= 65;
+  const rytjthdghghrg = dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball5.progress >= 35 && dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball5.progress <= 80;
+  const erhrtjhhrthrt = dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball6.progress >= 40 && dejgnhjertngmnfgnoirehfglkerngslkjfgsjfoifsdn.ball6.progress <= 90;
+
+  const dergergegerg = ergergergrgvf || gthdertgerger || rytjthdghghrg || erhrtjhhrthrt;
+
+
+  const gerignkerggigi = parseInt(document.getElementById("hrtherthrgdgertgyerhyrthrtge").value);
+
+  if (dergergegerg && !isReactionComplete && gerignkerggigi > 0)
+  {
+
+    if (!state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf && !isReactionComplete && gerignkerggigi > 0)
+    {
+      dfgdergerthgrthrytjunytuj(gerignkerggigi / 100);
+      state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = true;
+
+    }
+  } else
+  {
+
+
+
+
+    if (isReactionComplete && state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf)
+    {
+      dfgdergerthgrthrytjunytuj(0);
+      state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+
     }
   }
-  const h2oClassName = "BLUE_H2O_BALL moveBlueH2OBalls";
-  const h2oSrc = "../../../assets/H2O.png";
-  const h2oWidth = "!w-[10%] sm:!w-[18%]";
-  const h2oSelector = ".BLUE_H2O_BALLS_ANIMATIONS";
-  const ooClassName = "BLUE_OO_BALL moveBlueOOBalls";
-  const ooSrc = "../../../assets/OO.png";
-  const ooWidth = "!w-[10%] sm:!w-[14%]";
-  const ooSelector = ".BLUE_OO_BALLS_ANIMATIONS";
-  const eplusClassName = "GREEN_E_PLUS_BALL moveGreenEPlusBalls";
-  const eplusSrc = "../../../assets/E+.png";
-  const eplusWidth = "!w-[10%] sm:!w-[13%]";
-  const eplusSelector = ".GREEN_E_PLUS_BALLS_ANIMATIONS";
-  const h2ClassName = "RED_H2_BALL moveRedH2Balls";
-  const h2Src = "../../../assets/HH.png";
-  const h2Width = "!w-[10%] sm:!w-[14%]";
-  const h2Selector = ".RED_H2_BALLS_ANIMATIONS";
-  const h24ClassName = "ORANGE_H2_BALL";
-  const h24Src = "../../../assets/OH.png";
-  const h24Width = "!w-[90%]";
-  const h24Selector = ".ORANGE_H2_BALL_SANIMATIONS";
-  function createBall(type, hide = false) {
-    let className, src, width, selector;
-    switch (type) {
-      case "h2o":
-        className = h2oClassName;
-        src = h2oSrc;
-        width = h2oWidth;
-        selector = h2oSelector;
-        break;
-      case "oo":
-        className = ooClassName;
-        src = ooSrc;
-        width = ooWidth;
-        selector = ooSelector;
-        break;
-      case "eplus":
-        className = eplusClassName;
-        src = eplusSrc;
-        width = eplusWidth;
-        selector = eplusSelector;
-        break;
-      case "h2":
-        className = h2ClassName;
-        src = h2Src;
-        width = h2Width;
-        selector = h2Selector;
-        break;
-      case "h24":
-        className = h24ClassName;
-        src = h24Src;
-        width = h24Width;
-        selector = h24Selector;
-        break;
-      default:
-        console.error(`Unknown type: ${type}`);
-        return;
+
+
+  state.animationFrameId = requestAnimationFrame(yhrthrtghergwerferghrthrytjhytrj);
+}
+
+function checkResetElementsAndDisableRange () {
+  const resetModal = document.getElementById("resetModal");
+  const resetBtn = document.getElementById("resetBtn");
+  const ufuhgdhfisdfjosjfudufgufoisjfojidhid = document.getElementById("dfhgdfhsgdfghsderhrt");
+  const ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg = document.getElementById("dfghfdgsasdegertghrteg");
+  const gnerjlkgnhoierghoerhguorhfgjhsdjhfgs = document.getElementById("dfghdfssdfgasdfgsdghergrsaf");
+
+
+  const regrthtrjuytjuytjhdfgsdfsefefrwefgreValue = parseFloat(localStorage.getItem("edgoejgoijrogojfgjiihh") || "0");
+
+
+  const isResetModalVisible = resetModal && !resetModal.classList.contains("hidden");
+  const isReactionComplete = regrthtrjuytjuytjhdfgsdfsefefrwefgreValue >= 30;
+
+
+  if (resetBtn && resetBtn.classList.contains("hidden"))
+  {
+    resetBtn.classList.remove("hidden");
+  }
+
+
+  if (isResetModalVisible || isReactionComplete)
+  {
+
+    if (ufuhgdhfisdfjosjfudufgufoisjfojidhid) ufuhgdhfisdfjosjfudufgufoisjfojidhid.style.opacity = "0";
+    if (ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg) ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg.style.opacity = "0";
+    state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+
+
+    if (gnerjlkgnhoierghoerhguorhfgjhsdjhfgs)
+    {
+      gnerjlkgnhoierghoerhguorhfgjhsdjhfgs.classList.add("hidden");
     }
-    const container = document.querySelector(selector);
-    if (!container) {
-      console.error(`Container not found for selector: ${selector}`);
+
+
+    if (isReactionComplete && !isResetModalVisible && resetModal)
+    {
+      resetModal.classList.remove("hidden");
+      stopIntervals();
+    }
+  } else
+  {
+
+    if (gnerjlkgnhoierghoerhguorhfgjhsdjhfgs)
+    {
+      gnerjlkgnhoierghoerhguorhfgjhsdjhfgs.classList.remove("hidden");
+    }
+  }
+}
+setInterval(checkResetElementsAndDisableRange,10);
+
+const resetBtn = document.getElementById("resetBtn");
+const resetModal = document.getElementById("resetModal");
+const hgdfghdsghdehgehtersdgdetsegdf = document.getElementById("hgdfghdsghdehgehtersdgdetsegdf");
+const ergsgergergrthrthytjytjytjytjj = document.getElementById("ergsgergergrthrthytjytjytjytjj");
+
+resetBtn.addEventListener("click",function () {
+
+  localStorage.removeItem("werfwergergertgtrhrthe");
+  localStorage.removeItem("grerikgjoierjgosdfjfij");
+  localStorage.removeItem("egefrokgoskdfgoksdofoo");
+  localStorage.removeItem("edgoejgoijrogojfgjiihh");
+  localStorage.removeItem("eriofgjierjgjsdijdsffd");
+
+
+  resetModal.classList.add("hidden");
+
+
+  if (state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt) state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt.style.height = "100%";
+  if (state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre) state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre.style.height = "0%";
+  if (state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth) state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth.style.height = "100%";
+
+
+  state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+  dfgdergerthgrthrytjunytuj(0);
+
+
+  controllLiquideFlow();
+
+
+  updateDuration();
+
+  checkResetElementsAndDisableRange();
+});
+
+hgdfghdsghdehgehtersdgdetsegdf.addEventListener("click",function () {
+  resetModal.classList.add("!hidden");
+
+
+  checkResetElementsAndDisableRange();
+});
+
+ergsgergergrthrthytjytjytjytjj.addEventListener("click",function () {
+
+  localStorage.removeItem("werfwergergertgtrhrthe");
+  localStorage.removeItem("grerikgjoierjgosdfjfij");
+  localStorage.removeItem("egefrokgoskdfgoksdofoo");
+  localStorage.removeItem("edgoejgoijrogojfgjiihh");
+  localStorage.removeItem("eriofgjierjgjsdijdsffd");
+
+
+  resetModal.classList.add("hidden");
+
+
+  if (state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt) state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt.style.height = "100%";
+  if (state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre) state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre.style.height = "0%";
+  if (state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth) state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth.style.height = "100%";
+
+
+  state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+  dfgdergerthgrthrytjunytuj(0);
+
+
+  controllLiquideFlow();
+
+
+  updateDuration();
+
+  checkResetElementsAndDisableRange();
+});
+
+const controllLiquideFlow = () => {
+
+  const fghhergfsdfdhgtjtrjhytrjrytjtrhergtt = document.getElementById("fdgdergwergergwerfwefwefwe");
+  const regrthtrjuytjuytjhdfgsdfsefefrwefgre = document.getElementById("rfgergertghrthrytjhytjkytukjhr");
+  const rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth = document.getElementById("gertghrthrytjytjkhdfgsdfsd");
+
+
+  if (!fghhergfsdfdhgtjtrjhytrjrytjtrhergtt || !regrthtrjuytjuytjhdfgsdfsefefrwefgre || !rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth)
+  {
+    console.warn('Required elements not found. Skipping liquid flow control.');
+    return;
+  }
+
+
+  state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt = fghhergfsdfdhgtjtrjhytrjrytjtrhergtt;
+  state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre = regrthtrjuytjuytjhdfgsdfsefefrwefgre;
+  state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth = rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth;
+
+  const savedValue = localStorage.getItem("fdgdghetrgedsfgdsffg") || 1;
+  const bulbValue = parseInt(savedValue,10);
+
+
+  let gijrijfijodkoskdokvfcdi = 60 - ((bulbValue - 1) * (40 / 99));
+  localStorage.setItem("gijrijfijodkoskdokvfcdi",gijrijfijodkoskdokvfcdi);
+
+  let savedStartTime = localStorage.getItem("grerikgjoierjgosdfjfij");
+  let startTime = savedStartTime ? parseFloat(savedStartTime) : Date.now();
+
+  localStorage.setItem("grerikgjoierjgosdfjfij",startTime);
+
+  const updateHeights = () => {
+    if (!state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt || !state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre || !state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth)
+    {
       return;
     }
-    const existingBalls = container.querySelectorAll(`.${className}`);
-    existingBalls.forEach((ball) => ball.remove());
-    const ball = document.createElement("div");
-    ball.className = className;
-    ball.innerHTML = `<img src="${src}" alt="${type}" class="${width} h-auto" />`;
-    if (hide) {
-      ball.classList.add("hidden");
+
+    let elapsedTime = (Date.now() - startTime) / 1000;
+    let progress = Math.min(elapsedTime / gijrijfijodkoskdokvfcdi,1);
+
+
+    let new_h2_1_height = 100 - (progress * 100);
+
+    let new_h2_2_height = progress * 30;
+    let new_o2_1_height = 100 - (progress * 100);
+
+
+    new_h2_1_height = Math.max(0,Math.min(100,new_h2_1_height));
+    new_h2_2_height = Math.max(0,Math.min(30,new_h2_2_height));
+    new_o2_1_height = Math.max(0,Math.min(100,new_o2_1_height));
+
+    state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt.style.height = `${ new_h2_1_height }%`;
+    state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre.style.height = `${ new_h2_2_height }%`;
+    state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth.style.height = `${ new_o2_1_height }%`;
+
+    localStorage.setItem("egefrokgoskdfgoksdofoo",new_h2_1_height);
+    localStorage.setItem("edgoejgoijrogojfgjiihh",new_h2_2_height);
+    localStorage.setItem("eriofgjierjgjsdijdsffd",new_o2_1_height);
+
+    if (new_h2_2_height >= 30) 
+    {
+
+      stopIntervals();
+      return;
     }
-    ball.addEventListener("animationend", () => {
-      ball.remove();
-    });
-    container.appendChild(ball);
-  }
-  const durationMs = duration * 1000;
-  createBall("h2o", false);
-  setInterval(() => createBall("h2o", false), durationMs / 5);
-  createBall("oo", true);
-  createBall("eplus", true);
-  createBall("h2", true);
-  createBall("h24", true);
-  const intervals = {
-    oo: durationMs / 2.5,
-    eplus: durationMs / 12,
-    h2: durationMs / 5,
-    h24: durationMs / 5,
+
+    if (progress < 1)
+    {
+      requestAnimationFrame(updateHeights);
+    }
   };
-  setTimeout(() => {
-    createBall("oo", false);
-    createBall("eplus", false);
-    createBall("h2", false);
-    createBall("h24", false);
-    Object.entries(intervals).forEach(([type, interval]) => {
-      setInterval(() => createBall(type, false), Math.round(interval));
-    });
-  }, duration * 1000);
+
+  requestAnimationFrame(updateHeights);
+};
+
+
+function getDuration () {
+  return parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--duration"));
 }
-const resetBtn = document.querySelector(".resetBtn");
-if (resetBtn) {
-  const animationClasses = [".ORANGE_H2_BALL_SANIMATIONS", ".BLUE_H2O_BALLS_ANIMATIONS", ".BLUE_OO_BALLS_ANIMATIONS", ".GREEN_E_PLUS_BALLS_ANIMATIONS", ".RED_H2_BALLS_ANIMATIONS"];
-  setInterval(() => {
-    if (!resetBtn.classList.contains("hidden")) {
-      animationClasses.forEach((className) => {
-        const element = document.querySelector(className);
-        if (element) {
-          element.classList.add("!hidden");
-        }
+
+function setDuration (value) {
+  document.documentElement.style.setProperty("--duration",`${ value }s`);
+}
+
+
+function createBall (type) {
+  const ball = document.createElement("div");
+  ball.classList.add("ball",type,...ballTypes[ type ].className.split(" "));
+
+  const img = document.createElement("img");
+  img.src = ballTypes[ type ].src;
+  img.alt = type;
+  ball.appendChild(img);
+
+  state.elements.gnerjlkgnhoierghoerhguorhfgjhsdjhfgs.appendChild(ball);
+
+  const duration = getDuration();
+  ball.style.animationDuration = `${ duration }s`;
+  ball.startTime = Date.now();
+
+  ball.addEventListener("animationend",() => ball.remove());
+
+
+  if ([ "ball3","ball4","ball5","ball6" ].includes(type) && !state.animationFrameId)
+  {
+    state.animationFrameId = requestAnimationFrame(yhrthrtghergwerferghrthrytjhytrj);
+  }
+
+  return ball;
+}
+
+function updateBallSpeeds () {
+  document.querySelectorAll(".ball").forEach(ball => {
+    const elapsedTime = (Date.now() - ball.startTime) / 1000;
+    const remainingTime = Math.max(getDuration() - elapsedTime,0);
+    ball.style.animationDuration = `${ remainingTime }s`;
+  });
+}
+
+
+function stopIntervals () {
+  state.intervals.forEach(interval => clearInterval(interval));
+  state.intervals.clear();
+
+
+  if (state.animationFrameId)
+  {
+    cancelAnimationFrame(state.animationFrameId);
+    state.animationFrameId = null;
+  }
+}
+
+function startIntervals (durationInSeconds) {
+  stopIntervals();
+  const totalDuration = durationInSeconds * 1000;
+
+  Object.entries(ballTypes).forEach(([ type,config ]) => {
+    const interval = setInterval(
+      () => createBall(type),
+      totalDuration / config.interval
+    );
+    state.intervals.set(type,interval);
+  });
+}
+
+function updateDuration () {
+  const speed = parseInt(state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.value);
+
+
+  if (speed === 0)
+  {
+    stopIntervals();
+    state.elements.gnerjlkgnhoierghoerhguorhfgjhsdjhfgs.innerHTML = "";
+
+    state.elements.ufuhgdhfisdfjosjfudufgufoisjfojidhid.style.opacity = "0";
+    state.elements.ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg.style.opacity = "0";
+    state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+    return;
+  }
+
+
+  const newDuration = 16 - ((speed - 1) * (16 - 6) / 99);
+
+  setDuration(newDuration);
+  updateBallSpeeds();
+
+
+  stopIntervals();
+  state.elements.gnerjlkgnhoierghoerhguorhfgjhsdjhfgs.innerHTML = "";
+
+
+  state.elements.ufuhgdhfisdfjosjfudufgufoisjfojidhid.style.opacity = "0";
+  state.elements.ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg.style.opacity = "0";
+  state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+
+
+  if (window.bulbTimeout)
+  {
+    clearTimeout(window.bulbTimeout);
+  }
+  if (window.secondBatchTimeout)
+  {
+    clearTimeout(window.secondBatchTimeout);
+  }
+
+  if (window.thirdBatchTimeout)
+  {
+    clearTimeout(window.thirdBatchTimeout);
+  }
+
+
+
+  [ "ball2","ball11","ball16" ].forEach(createBall);
+
+
+  [ "ball2","ball11","ball16" ].forEach(type => {
+    const config = ballTypes[ type ];
+    const interval = setInterval(
+      () => createBall(type),
+      newDuration * 1000 / config.interval
+    );
+    state.intervals.set(type,interval);
+  });
+
+
+  const durationInMs = newDuration * 1000;
+
+
+  const secondBatchDelay = durationInMs * 1;
+
+
+
+  window.secondBatchTimeout = setTimeout(() => {
+
+
+
+    [ "ball1","ball3","ball4","ball5","ball6","ball7","ball8","ball9","ball10",
+      "ball12","ball13" ].forEach(createBall);
+
+
+    [ "ball1","ball3","ball4","ball5","ball6","ball7","ball8","ball9","ball10",
+      "ball12","ball13" ].forEach(type => {
+        const config = ballTypes[ type ];
+        const interval = setInterval(
+          () => createBall(type),
+          newDuration * 1000 / config.interval
+        );
+        state.intervals.set(type,interval);
       });
-    } else {
-      animationClasses.forEach((className) => {
-        const element = document.querySelector(className);
-        if (element) {
-          element.classList.remove("!hidden");
-        }
-      });
-    }
-  }, 1);
-}
-function setHeights() {
-  const h2odivElement = document.getElementById("h2o-quantity");
-  const h2o2divElement = document.getElementById("h2o-2-quantity");
-  const h2divElement = document.getElementById("h2-quantity");
-  const o2divElement = document.getElementById("o2-quantity");
-  let h2oHeight = parseFloat(localStorage.getItem("h2oHeight") || "100");
-  let h2o2Height = parseFloat(localStorage.getItem("h2o2Height") || "0");
-  let h2Height = parseFloat(localStorage.getItem("h2Height") || "0");
-  let o2Height = parseFloat(localStorage.getItem("o2Height") || "0");
-  const currentVoltValue_ = parseInt(localStorage.getItem("currentVoltValue"));
-  if (localStorage.getItem("currentVoltValue") === "0") {
-    h2odivElement.setAttribute("height", h2oHeight + "%");
-    h2odivElement.setAttribute("style", "height:" + h2oHeight + "%");
-    h2divElement.setAttribute("height", h2Height + "%");
-    h2divElement.setAttribute("style", "height:" + h2Height + "%");
-    o2divElement.setAttribute("height", o2Height + "%");
-    o2divElement.setAttribute("style", "height:" + o2Height + "%");
-    h2o2divElement.setAttribute("height", h2o2Height + "%");
-    h2o2divElement.setAttribute("style", "height:" + h2o2Height + "%");
-  } else {
-    h2oHeight -= 100 / (60 - currentVoltValue_);
-    h2o2Height += 80 / (60 - currentVoltValue_);
-    h2Height += 100 / (60 - currentVoltValue_);
-    o2Height += 100 / (60 - currentVoltValue_) / 2;
-    h2oHeight = Math.max(0, h2oHeight);
-    h2Height = Math.min(100, h2Height);
-    o2Height = Math.min(50, o2Height);
-    h2o2Height = Math.min(100, h2o2Height);
-    localStorage.setItem("h2oHeight", h2oHeight.toString());
-    localStorage.setItem("h2Height", h2Height.toString());
-    localStorage.setItem("o2Height", o2Height.toString());
-    localStorage.setItem("h2o2Height", h2o2Height.toString());
-    h2odivElement.setAttribute("height", h2oHeight + "%");
-    h2odivElement.setAttribute("style", "height:" + h2oHeight + "%");
-    h2divElement.setAttribute("height", h2Height + "%");
-    h2divElement.setAttribute("style", "height:" + h2Height + "%");
-    o2divElement.setAttribute("height", o2Height + "%");
-    o2divElement.setAttribute("style", "height:" + o2Height + "%");
-    h2o2divElement.setAttribute("height", h2o2Height + "%");
-    h2o2divElement.setAttribute("style", "height:" + h2o2Height + "%");
-    if (h2oHeight <= 0) {
-      clearInterval(window._heightInterval);
-      const resetModal = document.getElementById("resetModal");
-      resetModal.classList.remove("hidden");
-      resetBtn.classList.remove("hidden");
-    }
-  }
-  const currentVoltValue = parseInt(localStorage.getItem("currentVoltValue") || "0");
-  if (currentVoltValue === 22 && h2Height === 100 && h2oHeight === 0 && o2Height === 50 && h2o2Height === 0) {
-    localStorage.setItem("currentVoltValue", "12");
-    location.reload();
-  }
-}
-if (window._heightInterval) {
-  clearInterval(window._heightInterval);
-}
-window._heightInterval = setInterval(setHeights, 1000);
-function setupResetModal() {
-  const confirmResetBtn = document.getElementById("confirmResetBtn");
-  const resetBtn = document.getElementById("resetBtn");
-  const cancelBtn = document.getElementById("cancelBtn");
-  const resetModal = document.getElementById("resetModal");
-  const reloadAfterReset = () => {
-    setTimeout(() => {
-      window.location.reload();
-    }, 0.1);
-  };
-  resetBtn.addEventListener("click", reloadAfterReset);
-  confirmResetBtn.addEventListener("click", reloadAfterReset);
-  resetBtn.addEventListener("click", () => {
-    resetBtn.classList.add("hidden");
-    resetModal.classList.add("hidden");
-    localStorage.setItem("h2oHeight", "100");
-    localStorage.setItem("h2Height", "0");
-    localStorage.setItem("o2Height", "0");
-    localStorage.setItem("h2o2Height", "0");
-    const h2odivElement = document.getElementById("h2o-quantity");
-    const h2divElement = document.getElementById("h2-quantity");
-    const o2divElement = document.getElementById("o2-quantity");
-    const h2o2divElement = document.getElementById("h2o-2-quantity");
-    h2odivElement.setAttribute("height", 100 + "%");
-    h2odivElement.setAttribute("style", "height:" + 100 + "%");
-    h2divElement.setAttribute("height", 0 + "%");
-    h2divElement.setAttribute("style", "height:" + 0 + "%");
-    o2divElement.setAttribute("height", 0 + "%");
-    o2divElement.setAttribute("style", "height:" + 0 + "%");
-    h2o2divElement.setAttribute("height", 0 + "%");
-    h2o2divElement.setAttribute("style", "height:" + 0 + "%");
-    if (window._heightInterval) {
-      clearInterval(window._heightInterval);
-    }
-    window._heightInterval = setInterval(setHeights, 1000);
-  });
-  confirmResetBtn.addEventListener("click", () => {
-    resetBtn.classList.add("hidden");
-    resetModal.classList.add("hidden");
-    localStorage.setItem("h2oHeight", "100");
-    localStorage.setItem("h2Height", "0");
-    localStorage.setItem("o2Height", "0");
-    localStorage.setItem("h2o2Height", "0");
-    const h2odivElement = document.getElementById("h2o-quantity");
-    const h2divElement = document.getElementById("h2-quantity");
-    const o2divElement = document.getElementById("o2-quantity");
-    const h2o2divElement = document.getElementById("h2o-2-quantity");
-    h2odivElement.setAttribute("height", 100 + "%");
-    h2odivElement.setAttribute("style", "height:" + 100 + "%");
-    h2divElement.setAttribute("height", 0 + "%");
-    h2divElement.setAttribute("style", "height:" + 0 + "%");
-    o2divElement.setAttribute("height", 0 + "%");
-    o2divElement.setAttribute("style", "height:" + 0 + "%");
-    h2o2divElement.setAttribute("height", 0 + "%");
-    h2o2divElement.setAttribute("style", "height:" + 0 + "%");
-    if (window._heightInterval) {
-      clearInterval(window._heightInterval);
-    }
-    window._heightInterval = setInterval(setHeights, 1000);
-  });
-  cancelBtn.addEventListener("click", () => {
-    resetModal.classList.add("hidden");
-    resetBtn?.classList.remove("hidden");
-    resetBtn?.addEventListener("click", () => {
-      const h2odivElement = document.getElementById("h2o-quantity");
-      const h2divElement = document.getElementById("h2-quantity");
-      const o2divElement = document.getElementById("o2-quantity");
-      const h2o2divElement = document.getElementById("h2o-2-quantity");
-      h2odivElement.setAttribute("height", 100 + "%");
-      h2odivElement.setAttribute("style", "height:" + 100 + "%");
-      h2divElement.setAttribute("height", 0 + "%");
-      h2divElement.setAttribute("style", "height:" + 0 + "%");
-      o2divElement.setAttribute("height", 0 + "%");
-      o2divElement.setAttribute("style", "height:" + 0 + "%");
-      h2o2divElement.setAttribute("height", 0 + "%");
-      h2o2divElement.setAttribute("style", "height:" + 0 + "%");
-      if (window._heightInterval) {
-        clearInterval(window._heightInterval);
-      }
-      window._heightInterval = setInterval(setHeights, 1000);
+  },secondBatchDelay);
+
+
+  window.thirdBatchTimeout = setTimeout(() => {
+
+
+
+    [ "ball14","ball15" ].forEach(createBall);
+
+
+    [ "ball14","ball15" ].forEach(type => {
+      const config = ballTypes[ type ];
+      const interval = setInterval(
+        () => createBall(type),
+        newDuration * 1000 / config.interval
+      );
+      state.intervals.set(type,interval);
     });
-  });
+  },secondBatchDelay * 2);
 }
-function initializeSunRaysController() {
-  const sunRaysControllerDiv = document.querySelector(".sunRaysController");
-  let maxVolts = 25;
-  let currentVoltValue = localStorage.getItem("currentVoltValue");
-  currentVoltValue = currentVoltValue ? parseInt(currentVoltValue) : maxVolts / 2;
-  let currentValue = (currentVoltValue / maxVolts) * 100;
-  const inputRangeHTML = `<input type="range" min="0" max="100" value="${currentValue}" id="sunRaysController" />`;
-  sunRaysControllerDiv.insertAdjacentHTML("beforeend", inputRangeHTML);
-  const sunRaysController = document.getElementById("sunRaysController");
-  sunRaysController.onmouseup = () => {
-    location.reload();
-  };
-  const voltCount = document.querySelector(".VOLT_COUNT");
-  const styleElement = document.createElement("style");
-  document.head.appendChild(styleElement);
-  const voltLow = document.querySelector(".VOLT_LOW");
-  const voltHigh = document.querySelector(".VOLT_HIGH");
-  if (voltLow) voltLow.textContent = "0 %";
-  if (voltHigh) voltHigh.textContent = "100 %";
-  // if (voltHigh) voltHigh.textContent = `${maxVolts} %`;
-  const animationClasses = [".ORANGE_H2_BALL_SANIMATIONS", ".BLUE_H2O_BALLS_ANIMATIONS", ".BLUE_OO_BALLS_ANIMATIONS", ".GREEN_E_PLUS_BALLS_ANIMATIONS", ".RED_H2_BALLS_ANIMATIONS"];
-  function toggleAnimations(voltValue) {
-    animationClasses.forEach((className) => {
-      const element = document.querySelector(className);
-      if (element) {
-        if (voltValue === 0) {
-          element.classList.add("hidden");
-        } else {
-          element.classList.remove("hidden");
-        }
-      }
-    });
+
+
+let updateTimeoutId = null;
+state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.addEventListener("input",() => {
+  if (updateTimeoutId)
+  {
+    clearTimeout(updateTimeoutId);
   }
-  function updateSunRaysColor() {
-    const value = sunRaysController.value;
-    const voltCountValue = Math.floor((value / 100) * maxVolts);
-    localStorage.setItem("currentVoltValue", voltCountValue);
-    if (voltCount) {
-      voltCount.textContent = `${voltCountValue}V`;
-    }
-    const opacity = value / 100;
-    styleElement.textContent = `
-    .SUN_RAYS {
-      opacity: ${opacity};
-      }
-      `;
-    toggleAnimations(voltCountValue);
-  }
-  toggleAnimations(currentVoltValue);
-  updateSunRaysColor();
-  sunRaysController.addEventListener("input", updateSunRaysColor);
-}
-document.addEventListener("DOMContentLoaded", () => {
-  let h2oHeight = parseFloat(localStorage.getItem("h2oHeight"));
-  if (isNaN(h2oHeight)) {
-    localStorage.setItem("currentVoltValue", "12");
-    localStorage.setItem("h2oHeight", "100");
-    localStorage.setItem("h2Height", "0");
-    localStorage.setItem("o2Height", "0");
-    localStorage.setItem("h2o2Height", "0");
-  }
-  initializeBalls();
-  setHeights();
-  initializeSunRaysController();
-  setupResetModal();
+  updateTimeoutId = setTimeout(updateDuration,50);
 });
-async function getHeightsForVoltage(voltage) {
-  const response = await fetch("path/to/prompt.md");
-  const text = await response.text();
-  const lines = text.split("\n");
-  const headers = lines[0].split("\t");
-  const voltIndex = headers.indexOf("Current Volts");
-  const h2oIndex = headers.indexOf("H2O Height (%)");
-  const h2o2Index = headers.indexOf("H2O2 Height (%)");
-  const h2Index = headers.indexOf("H2 Height (%)");
-  const o2Index = headers.indexOf("O2 Height (%)");
-  for (let i = 1; i < lines.length; i++) {
-    const cols = lines[i].split("\t");
-    if (parseInt(cols[voltIndex], 10) === voltage) {
-      return {
-        h2oHeight: parseFloat(cols[h2oIndex]),
-        h2o2Height: parseFloat(cols[h2o2Index]),
-        h2Height: parseFloat(cols[h2Index]),
-        o2Height: parseFloat(cols[o2Index]),
-      };
-    }
+
+
+function hideohjudeghsjfgksdjfisdfhgfjdsghsdisifj () {
+  if (state.elements.ohjudeghsjfgksdjfisdfhgfjdsghsdisifj)
+  {
+
+    state.elements.ohjudeghsjfgksdjfisdfhgfjdsghsdisifj.style.display = 'none';
+
+
+
   }
+}
+
+function isFirstVisit () {
+  return localStorage.getItem("hasVisited") === null;
+}
+function initializeApp () {
+
+  if (performance.navigation.type === 1)
+  {
+    const savedValue = localStorage.getItem("fdgdghetrgedsfgdsffg");
+    if (savedValue !== null)
+    {
+      state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.value = savedValue;
+    }
+  } else
+  {
+
+    localStorage.removeItem("werfwergergertgtrhrthe");
+    localStorage.removeItem("grerikgjoierjgosdfjfij");
+    localStorage.removeItem("egefrokgoskdfgoksdofoo");
+    localStorage.removeItem("edgoejgoijrogojfgjiihh");
+    localStorage.removeItem("eriofgjierjgjsdijdsffd");
+    localStorage.removeItem("fdgdghetrgedsfgdsffg");
+
+
+    state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.value = "50";
+    localStorage.setItem("fdgdghetrgedsfgdsffg","50");
+
+
+    localStorage.setItem("hasVisited","true");
+  }
+
+
+  state.elements.ufuhgdhfisdfjosjfudufgufoisjfojidhid.style.opacity = "0";
+  state.elements.ghfhfgjkjktgyjghxfgdfgfhgfjhhtrfgdfg.style.opacity = "0";
+  state.rtfhrtfhrgdsgdfsgehetrghreghsertgegegf = false;
+
+  hideohjudeghsjfgksdjfisdfhgfjdsghsdisifj();
+
+
+  if (state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt) state.elements.fghhergfsdfdhgtjtrjhytrjrytjtrhergtt.style.height = "100%";
+  if (state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre) state.elements.regrthtrjuytjuytjhdfgsdfsefefrwefgre.style.height = "0%";
+  if (state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth) state.elements.rtjtyjufhdfgsdfgsdfergerhtrhtrjhryth.style.height = "100%";
+
+  controllLiquideFlow();
+  checkResetElementsAndDisableRange();
+
+  dfgdergerthgrthrytjunytuj(0);
+  updateDuration();
+}
+
+
+window.addEventListener("load",initializeApp);
+state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.addEventListener("mouseup",function () {
+  localStorage.setItem("fdgdghetrgedsfgdsffg",state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.value);
+});
+
+
+[ "mouseup","touchend" ].forEach(event => {
+  state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.addEventListener(event,() => {
+    localStorage.setItem("fdgdghetrgedsfgdsffg",state.elements.djfgdfjlghisdfjhgisdfjhgoisdigsgfids.value);
+    location.reload();
+  });
+});
+
+
+
+
+const qwkx81nsq = document.getElementById('hrtherthrgdgertgyerhyrthrtge');
+const plzv0smcr = document.querySelector('.tfnnhdrfnjsetbgw');
+const smdp4ujzx = document.querySelector('.njsertnsetneyerynsenter');
+const wmnz58lvo = document.querySelectorAll('.ghjfytjytulkryjtjykjk');
+const vuhs6tcar = document.querySelectorAll('.yjytgkyuluilidetgsefsdfsef');
+
+
+const storageKeys = {
+  a1: "bQX8VpL2",
+  a2: "ZyM4TnP9",
+  a3: "WdJ5FkX1",
+  a4: "TrC7QmB6",
+  range: "Xn9LpTQ3"
+};
+
+
+const dataPool = {
+  k1: "eyJib3R0b20iOiA5Mi41LCJsZWZ0IjogLTQuOCwicm90YXRlIjogMH0=",
+  k2: "eyJib3R0b20iOiA5NCwibGVmdCI6IC0yLCJyb3RhdGUiOiA5MH0=",
+  k3: "eyJib3R0b20iOiAyMi41LCJsZWZ0IjogLTQuOCwicm90YXRlIjogMH0=",
+  k4: "eyJib3R0b20iOiAyNCwibGVmdCI6IC0yLCJyb3RhdGUiOiA5MH0=",
+  k5: "eyJib3R0b20iOiA5Mi44LCJsZWZ0IjogOTYuNSwicm90YXRlIjogMH0=",
+  k6: "eyJib3R0b20iOiA5NC4yLCJsZWZ0IjogOTMuNSwicm90YXRlIjogLTkwfQ==",
+  k7: "eyJib3R0b20iOiAxOCwibGVmdCI6IDk2LjUsInJvdGF0ZSI6IDB9",
+  k8: "eyJib3R0b20iOiAxOSwibGVmdCI6IDkzLjUsInJvdGF0ZSI6IC05MH0="
+};
+
+
+function yfxr2po1 (encoded) {
+  return JSON.parse(atob(encoded));
+}
+
+
+function xzjw6lfa (value,ntype = 1) {
+  const p = value / 100;
+  let start,end;
+
+  switch (ntype)
+  {
+    case 2: start = yfxr2po1(dataPool.k3); end = yfxr2po1(dataPool.k4); break;
+    case 3: start = yfxr2po1(dataPool.k5); end = yfxr2po1(dataPool.k6); break;
+    case 4: start = yfxr2po1(dataPool.k7); end = yfxr2po1(dataPool.k8); break;
+    default: start = yfxr2po1(dataPool.k1); end = yfxr2po1(dataPool.k2);
+  }
+
   return {
-    h2oHeight: 100.0,
-    h2o2Height: 0.0,
-    h2Height: 0.0,
-    o2Height: 0.0,
+    bottom: start.bottom + p * (end.bottom - start.bottom),
+    left: start.left + p * (end.left - start.left),
+    rotate: start.rotate + p * (end.rotate - start.rotate),
   };
 }
+
+
+function btzu9yop (value) {
+  if (plzv0smcr)
+  {
+    const a = xzjw6lfa(value,1);
+    plzv0smcr.style.bottom = `${ a.bottom }%`;
+    plzv0smcr.style.left = `${ a.left }%`;
+    plzv0smcr.style.transform = `rotate(${ a.rotate }deg)`;
+    localStorage.setItem(storageKeys.a1,JSON.stringify(a));
+  }
+
+  if (smdp4ujzx)
+  {
+    const b = xzjw6lfa(value,2);
+    smdp4ujzx.style.bottom = `${ b.bottom }%`;
+    smdp4ujzx.style.left = `${ b.left }%`;
+    smdp4ujzx.style.transform = `rotate(${ b.rotate }deg)`;
+    localStorage.setItem(storageKeys.a2,JSON.stringify(b));
+  }
+
+  if (wmnz58lvo.length > 0)
+  {
+    const c = xzjw6lfa(value,3);
+    wmnz58lvo.forEach(valve => {
+      valve.style.bottom = `${ c.bottom }%`;
+      valve.style.left = `${ c.left }%`;
+      valve.style.transform = `rotate(${ c.rotate }deg)`;
+    });
+    localStorage.setItem(storageKeys.a3,JSON.stringify(c));
+  }
+
+  if (vuhs6tcar.length > 0)
+  {
+    const d = xzjw6lfa(value,4);
+    vuhs6tcar.forEach(valve => {
+      valve.style.bottom = `${ d.bottom }%`;
+      valve.style.left = `${ d.left }%`;
+      valve.style.transform = `rotate(${ d.rotate }deg)`;
+    });
+    localStorage.setItem(storageKeys.a4,JSON.stringify(d));
+  }
+
+
+}
+
+
+function qplx5urs () {
+  const sv = localStorage.getItem(storageKeys.range);
+  return sv ? parseInt(sv) : 0;
+}
+
+
+
+function vbmz6twr () {
+
+  const value = localStorage.getItem("fdgdghetrgedsfgdsffg") ? parseInt(localStorage.getItem("fdgdghetrgedsfgdsffg")) : 50;
+
+  if (plzv0smcr)
+  {
+    const a = xzjw6lfa(value,1);
+    plzv0smcr.style.bottom = `${ a.bottom }%`;
+    plzv0smcr.style.left = `${ a.left }%`;
+    plzv0smcr.style.transform = `rotate(${ a.rotate }deg)`;
+    localStorage.setItem(storageKeys.a1,JSON.stringify(a));
+  }
+
+  if (smdp4ujzx)
+  {
+    const b = xzjw6lfa(value,2);
+    smdp4ujzx.style.bottom = `${ b.bottom }%`;
+    smdp4ujzx.style.left = `${ b.left }%`;
+    smdp4ujzx.style.transform = `rotate(${ b.rotate }deg)`;
+    localStorage.setItem(storageKeys.a2,JSON.stringify(b));
+  }
+
+  if (wmnz58lvo.length > 0)
+  {
+    const c = xzjw6lfa(value,3);
+    wmnz58lvo.forEach(valve => {
+      valve.style.bottom = `${ c.bottom }%`;
+      valve.style.left = `${ c.left }%`;
+      valve.style.transform = `rotate(${ c.rotate }deg)`;
+    });
+    localStorage.setItem(storageKeys.a3,JSON.stringify(c));
+  }
+
+  if (vuhs6tcar.length > 0)
+  {
+    const d = xzjw6lfa(value,4);
+    vuhs6tcar.forEach(valve => {
+      valve.style.bottom = `${ d.bottom }%`;
+      valve.style.left = `${ d.left }%`;
+      valve.style.transform = `rotate(${ d.rotate }deg)`;
+    });
+    localStorage.setItem(storageKeys.a4,JSON.stringify(d));
+  }
+}
+
+
+
+
+if (qwkx81nsq)
+{
+  qwkx81nsq.addEventListener('input',function () {
+    btzu9yop(parseInt(this.value));
+  });
+}
+
+
+document.addEventListener('DOMContentLoaded',vbmz6twr);
+if (document.readyState === 'complete' || document.readyState === 'interactive')
+{
+  vbmz6twr();
+}
+
+
+window.btzu9yop = btzu9yop;
