@@ -17,7 +17,7 @@
 </head>
 
 <body>
- 
+
   <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
     x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
     <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
@@ -216,7 +216,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
           <img src="../../assets/BlueHydrogen.png" alt="" class="mx-auto shadow-lg rounded-2xl" />
-          <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center">
+          <div class="flex-col flex items-start space-y-3.5 lg:space-y-[26px] justify-center h-[85%]">
             <h3 class="text-[22px] md:text-3xl lg:text-[32px] line-height-[32px] font-semibold">
               Overview
             </h3>
@@ -228,28 +228,33 @@
               basic operation of a PEM fuel cell involves the splitting of hydrogen molecules at the anode, where they
               release protons (hydrogen ions) and electrons. The protons pass through the electrolyte membrane, while
               the electrons travel through an external circuit, generating an electric current that can be used to power
-              various devices or systems. At the cathode, the protons combine with oxygen from the air to form water,
-              completing the electrochemical process.
-
+              various devices or systems. At the cathode,the protons
+            
               <span id="dots"></span>
-              <span id="more" style="display: none">The overall chemical reaction in a PEM fuel cell is:
+              <span id="more" style="display: none">
+                combine with oxygen from the air   to form water, completing the electrochemical process.
+                <br></br>
+                The overall chemical reaction in a PEM fuel cell is:
                 <br>
-                <span style="margin-left: 190px;font-weight: bold; ">
-                  2H2 + O2 → 2H2O + electricity + heat
+                <span style="font-weight: bold; ">
+                  2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O + electricity + heat
+
                 </span>
                 </br>
                 At the anode:
                 <br>
-                <span style="margin-left: 200px;font-weight: bold; ">
-                  H2 → 2H+ + 2e−
+                <span style="font-weight: bold; ">
+                  H<sub>2</sub> → 2H<sup>+</sup> + 2e<sup>-</sup>
+
                 </span>
                 </br>
                 At the cathode:
                 <br>
-                <span style="margin-left: 200px;font-weight: bold; ">
-                  O2 + 4H+ + 4e− → 2H2O
+                <span style="font-weight: bold; ">
+                  O<sub>2</sub> + 4H<sup>+</sup> + 4e<sup>-</sup> → 2H<sub>2</sub>O
+
                 </span>
-                </br>
+                <br>
                 One of the primary reasons why PEM fuel cells are considered a key technology for the hydrogen economy
                 is their efficiency and versatility. They operate at relatively low temperatures, typically between 50
                 and 100°C, which makes them well-suited for a wide range of applications, from transportation to
@@ -259,6 +264,7 @@
                 fuel cells one of the cleanest energy technologies available. This characteristic is especially
                 important in the context of global efforts to reduce greenhouse gas emissions and transition to
                 sustainable energy systems.
+                <br></br>
                 In the transportation sector, PEM fuel cells have gained significant attention due to their lightweight,
                 compact design and ability to provide quick start-up times. These attributes make PEM fuel cells ideal
                 for use in hydrogen-powered vehicles, including cars, buses, trucks, and even trains. In particular,
@@ -268,6 +274,7 @@
                 convenient and practical solution for long-distance travel. Additionally, hydrogen-powered vehicles
                 produce zero emissions, offering a clean alternative to conventional gasoline and diesel-powered
                 vehicles.
+                <br></br>
                 Beyond transportation, PEM fuel cells also hold significant promise in the realm of portable devices and
                 stationary power systems. For portable electronics, such as laptops, smartphones, and other consumer
                 gadgets, PEM fuel cells can offer a longer-lasting and more efficient power source compared to
@@ -278,6 +285,7 @@
                 balance the intermittent nature of renewable energy sources, such as wind and solar power. When paired
                 with hydrogen produced from renewable sources, PEM fuel cells offer a pathway to a fully decarbonized
                 energy grid.
+                <br></br>
                 Despite their many advantages, PEM fuel cells face several challenges that must be addressed in order to
                 unlock their full potential. One of the most significant challenges is the high cost of platinum
                 catalysts, which are used in the fuel cell electrodes to facilitate the electrochemical reactions.
@@ -287,6 +295,7 @@
                 that can perform similarly to platinum but at a lower cost. Additionally, advances in catalyst design
                 and manufacturing processes are being explored to improve the efficiency and reduce the amount of
                 platinum required in PEM fuel cells.
+                <br></br>
                 Another challenge facing PEM fuel cells is their sensitivity to fuel impurities, particularly carbon
                 monoxide (CO). Even small amounts of CO in the hydrogen fuel can poison the platinum catalyst, reducing
                 the fuel cell's performance and lifespan. To mitigate this issue, hydrogen fuel must be purified before
@@ -294,6 +303,7 @@
                 working on developing advanced filtration and purification systems that can remove contaminants from
                 hydrogen fuel more efficiently, ensuring that PEM fuel cells can operate at their optimal performance
                 levels.
+                <br></br>
                 In addition to these technical challenges, PEM fuel cells also face economic and infrastructure-related
                 barriers that need to be overcome for widespread adoption. One of the main hurdles is the lack of a
                 robust hydrogen fueling infrastructure, particularly in areas where hydrogen-powered vehicles are not
@@ -303,6 +313,7 @@
                 creating opportunities for further investment and infrastructure development. Governments around the
                 world are already taking steps to support the growth of hydrogen infrastructure through incentives,
                 subsidies, and partnerships with industry stakeholders.
+                <br></br>
                 Despite these challenges, PEM fuel cells are widely regarded as a cornerstone technology for the
                 hydrogen economy. Their ability to provide clean, efficient, and reliable energy makes them a crucial
                 component of the transition to a sustainable energy future. As research continues to address the
@@ -311,6 +322,7 @@
                 and investment, PEM fuel cells have the potential to play a leading role in decarbonizing
                 transportation, power generation, and other sectors, helping to create a cleaner, more sustainable
                 world.
+                <br></br>
                 In conclusion, PEM fuel cells offer a versatile, efficient, and environmentally friendly energy solution
                 with the potential to revolutionize multiple industries. While challenges such as high catalyst costs
                 and fuel impurity sensitivity must be addressed, ongoing research and development in catalyst materials,
@@ -323,7 +335,7 @@
 
               </span>
               <button onclick="myFunction()" id="myBtn" style="color: blue">
-                Read more..
+                Read more...
               </button>
             </p>
 
