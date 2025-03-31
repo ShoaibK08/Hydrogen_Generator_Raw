@@ -11,10 +11,19 @@
   <link rel="stylesheet" href="./assets/main.css" />
   <script defer src="./assets/alpinejs.js"></script>
 
+  <style>
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+    }
+  </style>
+
 </head>
 
 <body>
-  <div class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
+  <div style="border: 1px solid red"
+    class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
     x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
     <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
       style="position: sticky; top: 0; z-index: 1200;">
@@ -35,7 +44,7 @@
       <img src="./assets/HydrogenGenerator.png" alt="" class="absolute z-[0] h-[100%] w-[100%] right-0  object-cover" />
 
       <div class="w-[95%] max-w-[90%] mx-auto relative z-[999]">
-        <div class="w-full lg:w-[55%] relative  space-y-[30px] py-[30px]">
+        <div class="w-full lg:w-[55%] relative  h-87vh space-y-[30px] py-[30px] ">
           <div class="flex items-center gap-3.5">
             <h3 class="text-base sm:text-xl md:text-2xl line-height-[32px] font-medium">Hydrogen Generator Learning</h3>
           </div>
@@ -111,15 +120,10 @@
                 ]
               },
               {
-                title: 'Categories of Fuel Cell',
+                title: 'Hydrogen Combustion Engine',
                 content: [
-                  { text: 'Alkaline Fuel Cell', url: './Categories of Fuell Cell/Alkaline Fuell Cell/alkaline-fuel-cell.html' },
-                  { text: 'PEM (Proton Exchange Membrane) Fuel Cell', url: './Categories of Fuell Cell/PEM Fuel Cell/pem-fuel-cell.html' },
-                  { text: 'Microbial Fuel Cell', url: './Categories of Fuell Cell/Microbial fuel Cell/microbial-fuel-cell.html' },
-                  { text: 'Phosphoric Acid Fuel Cells (PAFC)', url: './Categories of Fuell Cell/Phosphoric Acid Fuel Cells/pafc-fuel-cells.html' },
-                  { text: 'Molten Carbonate Fuel Cells (MCFC)', url: './Categories of Fuell Cell/Molten Carbonate Fuel Cell/molten-carbonate-fuel-cell.html' },
-                  { text: 'Solid Oxide Fuel Cells (SOFC)', url: './Categories of Fuell Cell/Solid Oxide Fuel Cells/solid-oxide-fuel-cells.html' },
-                  { text: 'Direct Ethanol Fuel Cells (DEFC)', url: './Categories of Fuell Cell/Direct Ethanol Fuel Cells/direct-ethanol-fuel-cells.html' }
+                  { text: 'Hydrogen Combustion Engine', url: './Hydrogen Combustion Engine/Hydrogen Combustion Engine/hydrogen-combustion-engine.html' },
+                  { text: '', url: 'javascript:void(0)' }
                 ]
               },
               {
@@ -141,12 +145,18 @@
                 ]
               },
               {
-                title: 'Hydrogen Combustion Engine',
+                title: 'Categories of Fuel Cell',
                 content: [
-                  { text: 'Hydrogen Combustion Engine', url: './Hydrogen Combustion Engine/Hydrogen Combustion Engine/hydrogen-combustion-engine.html' },
-                  { text: '', url: 'javascript:void(0)' }
+                  { text: 'Alkaline Fuel Cell', url: './Categories of Fuell Cell/Alkaline Fuell Cell/alkaline-fuel-cell.html' },
+                  { text: 'PEM (Proton Exchange Membrane) Fuel Cell', url: './Categories of Fuell Cell/PEM Fuel Cell/pem-fuel-cell.html' },
+                  { text: 'Microbial Fuel Cell', url: './Categories of Fuell Cell/Microbial fuel Cell/microbial-fuel-cell.html' },
+                  { text: 'Phosphoric Acid Fuel Cells (PAFC)', url: './Categories of Fuell Cell/Phosphoric Acid Fuel Cells/pafc-fuel-cells.html' },
+                  { text: 'Molten Carbonate Fuel Cells (MCFC)', url: './Categories of Fuell Cell/Molten Carbonate Fuel Cell/molten-carbonate-fuel-cell.html' },
+                  { text: 'Solid Oxide Fuel Cells (SOFC)', url: './Categories of Fuell Cell/Solid Oxide Fuel Cells/solid-oxide-fuel-cells.html' },
+                  { text: 'Direct Ethanol Fuel Cells (DEFC)', url: './Categories of Fuell Cell/Direct Ethanol Fuel Cells/direct-ethanol-fuel-cells.html' }
                 ]
               },
+             
               {
                 title: 'Hydrogen Mobility and Transportation Applications',
                 content: [
@@ -169,7 +179,7 @@
             }
           }">
             <template x-for="(item, index) in items" :key="index">
-              <div class=" relative border-[1px] border-[#DADADA] bg-white rounded-[10px] p-[15px] flex items-center
+              <div class=" relative border-[1px] border-[#DADADA] bg-white rounded-[10px] p-[9px] flex items-center
               justify-between relative cursor-pointer" :class="{'rounded-b-none': activeItem === index}"
                 @click="activeItem === index ? activeItem = null : activeItem = index">
                 <h2 class="text-base line-height-[20px] font-medium" x-text="item.title"></h2>
@@ -177,14 +187,19 @@
                   <img src="./assets/icon6.png" alt="" class="transition-all duration-700"
                     :class="{'rotate-180': activeItem === index}" />
                 </div>
-                <div
-                  class="absolute top-full -left-[1px] -right-[1px] bg-[#f5f5f5] border-[1px] border-[#DADADA] rounded-b-[10px] bg-white p-[15px] z-[1000]"
-                  x-show="activeItem === index" x-transition>
+                <div :class="{  
+    'absolute top-full -left-[1px] -right-[1px] bg-[#f5f5f5] border-[1px] border-[#DADADA] rounded-b-[10px] bg-white p-[13px] z-[1000]':
+      activeItem < items.length - 3,
+    'absolute bottom-full -left-[1px] -right-[1px] bg-[#f5f5f5] border-[1px] border-[#DADADA] rounded-t-[10px] bg-white p-[13px] z-[1000]':
+      activeItem >= items.length - 3
+  }" x-show="activeItem === index" >
                   <template x-for="(paragraph, pIndex) in item.content" :key="pIndex">
                     <a :href="paragraph.url" class="block mb-4 last:mb-0 hover:text-[#0177fb]"
                       x-text="paragraph.text"></a>
                   </template>
                 </div>
+
+
               </div>
             </template>
           </div>
