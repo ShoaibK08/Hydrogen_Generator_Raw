@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <div style="border: 1px solid red"
+  <div
     class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
     x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
     <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
@@ -126,14 +126,7 @@
                   { text: '', url: 'javascript:void(0)' }
                 ]
               },
-              {
-                title: 'Advanced Hydrogen Fuel Cell Experiments',
-                content: [
-                  { text: 'Test the fuel cell at different load condition', url: './Advanced Hydrogen Fuel Cell Experiments/test-the-fuel-cell-at-diff-load-conditions.html' },
-                  { text: 'Study of IV characteristics of fuel cell', url: 'javascript:void(0)' },
-                  { text: 'Study of the Measurement of Fuel Cell Efficiency', url: 'javascript:void(0)' }
-                ]
-              },
+             
               {
                 title: 'Hydrogen Industrial Application',
                 content: [
