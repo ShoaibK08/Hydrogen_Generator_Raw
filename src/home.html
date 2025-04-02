@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Hydrogen Simtel Index</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
 
@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <div style="border: 1px solid red"
+  <div
     class="opacity-0 transform translate-x-[-200px] scale-50 rotate-[-1deg] transition-all duration-1000 ease-out"
     x-init="setTimeout(() => $el.classList.remove('opacity-0', 'translate-x-[-200px]', 'scale-50', 'rotate-[-1deg]'), 100)">
     <header class="relative shadow-lg h-20 left-0 w-full z-[100] bg-white" x-data="{ isOpen: false }"
@@ -60,7 +60,7 @@
                 ]
               },
               {
-                title: 'Categories of Hydrogen based on production',
+                title: 'Categories of Hydrogen Based on Production',
                 content: [
                   { text: 'Grey Hydrogen', url: './CategoriesBasedOnProduction/Grey Hydrogen/grey-hydrogen.html' },
                   { text: 'Blue Hydrogen', url: './CategoriesBasedOnProduction/Blue Hydrogen/blue-hydrogen.html' },
@@ -86,7 +86,7 @@
                 ]
               },
               {
-                title: 'Hydrogen Generation through Electrolysis',
+                title: 'Hydrogen Generation Through Electrolysis',
                 content: [
                   { text: 'Alkaline Electrolysis', url: './HydrogenElectrolysis/Alkaline Electrolysis/alkaline-electrolysics.html' },
                   { text: 'PEM (Proton Exchange Membrane) Electrolysis', url: './HydrogenElectrolysis/PEM_Electrolysis/PEM-electrolysis.html' },
@@ -126,14 +126,7 @@
                   { text: '', url: 'javascript:void(0)' }
                 ]
               },
-              {
-                title: 'Advanced Hydrogen Fuel Cell Experiments',
-                content: [
-                  { text: 'Test the fuel cell at different load condition', url: './Advanced Hydrogen Fuel Cell Experiments/test-the-fuel-cell-at-diff-load-conditions.html' },
-                  { text: 'Study of IV characteristics of fuel cell', url: 'javascript:void(0)' },
-                  { text: 'Study of the Measurement of Fuel Cell Efficiency', url: 'javascript:void(0)' }
-                ]
-              },
+             
               {
                 title: 'Hydrogen Industrial Application',
                 content: [
@@ -180,19 +173,22 @@
           }">
             <template x-for="(item, index) in items" :key="index">
               <div class=" relative border-[1px] border-[#DADADA] bg-white rounded-[10px] p-[9px] flex items-center
-              justify-between relative cursor-pointer" :class="{'rounded-b-none': activeItem === index}"
+              justify-between relative cursor-pointer" :class="{'rounded-b-none': activeItem === index, 'rounded-tr-[0px] rounded-tl-[0px] rounded-br-[10px] rounded-bl-[10px]' :activeItem === index && activeItem >= items.length - 3}"
                 @click="activeItem === index ? activeItem = null : activeItem = index">
                 <h2 class="text-base line-height-[20px] font-medium" x-text="item.title"></h2>
-                <div class="size-[30px] bg-[#0177fb] shrink-0 rounded-full flex justify-center items-center">
-                  <img src="./assets/icon6.png" alt="" class="transition-all duration-700"
-                    :class="{'rotate-180': activeItem === index}" />
+                <div class="size-[30px] bg-[#0177fb] shrink-0 rounded-full flex justify-center items-center" :class="{
+                  'rotate-180': activeItem === index,
+                  'mb-5': item.title === 'Hydrogen Mobility and Transportation Applications'
+                }">
+                  <img src="./assets/icon6.png" alt="" class="transition-all duration-700" />
                 </div>
+
                 <div :class="{  
     'absolute top-full -left-[1px] -right-[1px] bg-[#f5f5f5] border-[1px] border-[#DADADA] rounded-b-[10px] bg-white p-[13px] z-[1000]':
       activeItem < items.length - 3,
-    'absolute bottom-full -left-[1px] -right-[1px] bg-[#f5f5f5] border-[1px] border-[#DADADA] rounded-t-[10px] bg-white p-[13px] z-[1000]':
+    'absolute bottom-full -left-[1px] -right-[1px] bg-[#f5f5f5] border-[1px] border-[#DADADA] rounded-t-[10px] rounded-tr-[10px] rounded-tl-[10px] bg-white p-[13px] z-[1000]':
       activeItem >= items.length - 3
-  }" x-show="activeItem === index" >
+  }" x-show="activeItem === index">
                   <template x-for="(paragraph, pIndex) in item.content" :key="pIndex">
                     <a :href="paragraph.url" class="block mb-4 last:mb-0 hover:text-[#0177fb]"
                       x-text="paragraph.text"></a>
